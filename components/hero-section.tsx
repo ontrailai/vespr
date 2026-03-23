@@ -81,7 +81,7 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your data is the most valuable thing your business owns - and it&apos;s probably a mess. <span className="text-foreground font-medium">We fix that first.</span> Then we build AI that connects your tools, runs your workflows, and operates your business autonomously. One team. Every layer. Real results.
+            Your data is the most valuable thing your business owns - and it&apos;s probably a mess. <span className="text-foreground font-medium">We fix that first.</span> Then we implement AI systems that connect your tools, run your workflows, and operate your business autonomously. One team. Every layer. Real results.
           </p>
 
           <div 
