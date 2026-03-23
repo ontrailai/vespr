@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Fraunces } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-// Font configuration
 const plusJakartaSans = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
   variable: "--font-sans",
