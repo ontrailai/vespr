@@ -1,16 +1,27 @@
-export default function Home() {
+import { Header } from "@/components/header"
+import { HeroSection } from "@/components/hero-section"
+import { ProblemSection } from "@/components/problem-section"
+import { SolutionSection } from "@/components/solution-section"
+import { CapabilitiesSection } from "@/components/capabilities-section"
+import { IndustriesSection } from "@/components/industries-section"
+import { PricingSection } from "@/components/pricing-section"
+import { FaqSection } from "@/components/faq-section"
+import { Footer } from "@/components/footer"
+
+export default function ScoutPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Scout Website
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <CapabilitiesSection />
+        <IndustriesSection />
+        <PricingSection />
+        <FaqSection />
       </main>
+      <Footer />
     </div>
-  );
+  )
 }
