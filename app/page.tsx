@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { ProblemSection } from "@/components/problem-section"
 import { SolutionSection } from "@/components/solution-section"
+import { WhatYouGetSection } from "@/components/what-you-get-section"
 import { CapabilitiesSection } from "@/components/capabilities-section"
 import { IndustriesSection } from "@/components/industries-section"
 import { PricingSection } from "@/components/pricing-section"
@@ -16,6 +17,7 @@ export default function VesprPage() {
         <HeroSection />
         <ProblemSection />
         <SolutionSection />
+        <WhatYouGetSection />
         <CapabilitiesSection />
         <IndustriesSection />
         <PricingSection />

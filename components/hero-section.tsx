@@ -5,14 +5,6 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
-const trustedLogos = [
-  { name: "Healthcare Plus", initials: "H+" },
-  { name: "LegalTech Co", initials: "LT" },
-  { name: "InsureRight", initials: "IR" },
-  { name: "PropertyFlow", initials: "PF" },
-  { name: "DataFirst", initials: "DF" },
-]
-
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
 
@@ -136,29 +128,15 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Social proof bar */}
+        {/* Qualifying statement */}
         <div 
           className={`mt-20 border-t border-border pt-12 transition-all duration-700 delay-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <p className="text-center text-sm font-medium text-muted-foreground mb-8">
-            Trusted by data-driven teams at
+          <p className="text-center text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Built for healthcare, legal, insurance, and real estate teams who are tired of AI that doesn&apos;t work.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            {trustedLogos.map((logo, i) => (
-              <div
-                key={logo.name}
-                className="flex items-center gap-2.5 text-muted-foreground/50 hover:text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 cursor-default"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary/80 text-sm font-bold text-muted-foreground border border-border">
-                  {logo.initials}
-                </div>
-                <span className="text-sm font-medium">{logo.name}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

@@ -44,11 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html 
-      lang="en" 
-      className={`${plusJakarta.variable} ${fraunces.variable}`} 
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${plusJakarta.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         {children}
         <Analytics />
