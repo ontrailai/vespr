@@ -105,7 +105,7 @@ export function HeroSection() {
               asChild 
               className="rounded-full px-8 h-14 text-base font-medium border-2 border-border hover:border-accent/50 hover:bg-accent/5 transition-all hover:-translate-y-1"
             >
-              <Link href="#solution">See How It Works</Link>
+              <Link href="#pricing">Book a Call</Link>
             </Button>
           </div>
 
