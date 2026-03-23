@@ -19,7 +19,7 @@ const buildFeatures = [
   "Database architecture",
   "Custom software development",
   "AI implementation",
-  "Agent orchestration (Scout)",
+  "Agent orchestration",
   "One team, one timeline",
 ]
 
@@ -119,7 +119,7 @@ export function PricingSection() {
               variant="outline" 
               asChild
             >
-              <Link href="mailto:hello@ai-operators.com">
+              <Link href="mailto:hello@vespr.io">
                 Book Your Audit
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -173,7 +173,7 @@ export function PricingSection() {
               className="relative mt-8 w-full gap-2 rounded-full h-12 text-base font-medium bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 transition-all hover:-translate-y-0.5" 
               asChild
             >
-              <Link href="mailto:hello@ai-operators.com">
+              <Link href="mailto:hello@vespr.io">
                 Start With Your Data
                 <ArrowRight className="h-4 w-4" />
               </Link>

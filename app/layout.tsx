@@ -16,7 +16,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: 'Scout | AI Operators - Your AI Has a Data Problem',
+  title: 'vespr. | Your AI Has a Data Problem',
   description: 'Every AI agency skips the foundation. We start where the real problem is - your data. Then we build up from there, layer by layer, until your AI actually performs.',
   generator: 'v0.app',
   icons: {
@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakarta.variable} ${fraunces.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         {children}
         <Analytics />
       </body>

@@ -64,7 +64,7 @@ export function Footer() {
                 asChild 
                 className="group gap-2 bg-white text-accent hover:bg-white/95 rounded-full px-8 h-14 text-base font-medium shadow-xl shadow-black/10 transition-all hover:-translate-y-1"
               >
-                <Link href="mailto:hello@ai-operators.com">
+                <Link href="mailto:hello@vespr.io">
                   Book Your Audit
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -73,7 +73,7 @@ export function Footer() {
                 size="lg" 
                 variant="outline" 
                 asChild 
-                className="rounded-full px-8 h-14 text-base font-medium border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all hover:-translate-y-1"
+                className="rounded-full px-8 h-14 text-base font-medium border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 transition-all hover:-translate-y-1"
               >
                 <Link href="#solution">Learn More</Link>
               </Button>
@@ -86,14 +86,8 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent shadow-lg shadow-accent/20">
-                <span className="text-lg font-bold text-accent-foreground">S</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-semibold text-foreground tracking-tight">Scout</span>
-                <span className="text-xs text-muted-foreground">by AI Operators</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr.</span>
             </div>
             <nav className="flex flex-wrap items-center justify-center gap-8">
               {[
@@ -116,7 +110,7 @@ export function Footer() {
           </div>
           <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              {new Date().getFullYear()} AI Operators. All rights reserved.
+              {new Date().getFullYear()} vespr. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
               Built for businesses that take their data seriously.

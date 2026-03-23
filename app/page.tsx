@@ -8,7 +8,7 @@ import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 
-export default function ScoutPage() {
+export default function VesprPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />

@@ -126,28 +126,28 @@ export function SolutionSection() {
                 style={{ background: `radial-gradient(circle at 50% 100%, ${layers[activeLayer].color} 0%, transparent 60%)` }}
               />
               
-              {/* 3D-ish layer stack */}
-              <div className="relative h-[320px] flex flex-col justify-end items-center mb-8 perspective-1000">
+              {/* Layer stack - Layer 1 at top, waterfall down */}
+              <div className="relative flex flex-col items-center gap-2 mb-8">
                 {layers.map((layer, index) => {
                   const isActive = index <= activeLayer
                   const isCurrent = index === activeLayer
                   const Icon = layer.icon
+                  // Calculate width - Layer 1 is narrowest at top, expands as we go down
+                  const widthPercent = 70 + (index * 6)
                   
                   return (
                     <button
                       key={layer.number}
                       onClick={() => setActiveLayer(index)}
                       className={cn(
-                        "w-full max-w-xs h-14 rounded-xl transition-all duration-500 flex items-center justify-between px-5 relative overflow-hidden",
-                        isCurrent && "ring-2 ring-offset-2 ring-offset-card z-10 scale-105",
-                        !isActive && "opacity-40 scale-90"
+                        "h-14 rounded-xl transition-all duration-500 flex items-center justify-between px-5 relative overflow-hidden",
+                        isCurrent && "ring-2 ring-offset-2 ring-offset-card",
+                        !isActive && "opacity-40"
                       )}
                       style={{ 
                         backgroundColor: layer.color,
-                        marginTop: index === 0 ? 0 : '-8px',
-                        transform: `translateY(${(4 - index) * 4}px) scale(${isActive ? 1 : 0.95})`,
-                        zIndex: index + 1,
-                        boxShadow: isCurrent ? `0 10px 40px ${layer.color}50` : 'none'
+                        width: `${widthPercent}%`,
+                        boxShadow: isCurrent ? `0 10px 40px ${layer.color}50` : '0 4px 12px rgba(0,0,0,0.1)'
                       }}
                     >
                       {/* Shimmer effect on active */}

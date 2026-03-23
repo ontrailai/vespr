@@ -135,7 +135,7 @@ export function FaqSection() {
           <p className="text-muted-foreground">
             Still have questions?{" "}
             <a 
-              href="mailto:hello@ai-operators.com" 
+              href="mailto:hello@vespr.io" 
               className="text-accent font-semibold hover:underline underline-offset-4 transition-colors"
             >
               Get in touch

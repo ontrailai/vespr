@@ -36,11 +36,8 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-accent/25">
-            <span className="text-base font-bold text-accent-foreground">S</span>
-          </div>
-          <span className="text-xl font-semibold text-foreground tracking-tight">Scout</span>
+        <Link href="/" className="flex items-center gap-2 group">
+          <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr.</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -76,11 +73,8 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] bg-background border-border">
-            <div className="flex items-center gap-3 mb-8 mt-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
-                <span className="text-base font-bold text-accent-foreground">S</span>
-              </div>
-              <span className="text-xl font-semibold text-foreground">Scout</span>
+            <div className="flex items-center gap-2 mb-8 mt-4">
+              <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr.</span>
             </div>
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (
