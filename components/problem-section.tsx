@@ -159,7 +159,7 @@ export function ProblemSection() {
               You hired the agency. You bought the tools. You built the chatbot. And it gives wrong answers, misses context, and makes mistakes that embarrass your team in front of customers.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              <strong className="text-foreground">Why?</strong> Because every AI tool you plug in is reading from the same messy, duplicated, inconsistent data you&apos;ve been duct-taping together for years.
+              <strong className="text-foreground">Why?</strong>{" "}Because every AI tool you plug in is reading from the same messy, duplicated, inconsistent data you&apos;ve been duct-taping together for years.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
               Your customer records live in 4 different systems and none of them agree. Your spreadsheets have 3 versions of the same contact. Your CRM hasn&apos;t been cleaned since the last system migration.
