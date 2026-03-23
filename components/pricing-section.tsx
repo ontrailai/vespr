@@ -6,21 +6,25 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
 const auditFeatures = [
-  "Complete data audit across all systems",
-  "AI readiness score",
-  "Gap and risk identification",
-  "Clear roadmap for next steps",
-  "No commitment beyond the audit",
+  "Full data audit across every system you use",
+  "AI opportunity scorecard (where automation saves you the most)",
+  "Data quality report with specific issues identified",
+  "Competitive gap analysis (what AI can do for your industry)",
+  "Custom roadmap with timeline and ROI projections",
+  "60-minute strategy call to walk through findings",
+  "No commitment beyond the audit - the roadmap is yours to keep",
 ]
 
 const buildFeatures = [
-  "All 5 layers included",
-  "Data cleanup and organization",
-  "Database architecture",
-  "Custom software development",
-  "AI implementation",
-  "Agent orchestration",
-  "One team, one timeline",
+  "Clean, structured data across all your systems",
+  "Custom employee portal and dashboards your team actually uses",
+  "AI workflows running your follow-ups, scheduling, reporting, and intake",
+  "Scout instance configured for your business operations",
+  "Integrations with your CRM, email, calendar, and existing tools",
+  "Multi-agent AI team (research, writing, ops, communications)",
+  "10+ hours of manual work automated per week",
+  "Ongoing optimization - Scout gets smarter every month",
+  "Dedicated team, single point of contact, one timeline",
 ]
 
 export function PricingSection() {
