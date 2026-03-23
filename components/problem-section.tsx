@@ -102,22 +102,22 @@ export function ProblemSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            The Real Problem
+            Why Most AI Fails
           </span>
           <h2 
             className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1] transition-all duration-500 delay-100 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            You Bought the AI.{" "}
-            <span className="text-muted-foreground">It Still Doesn&apos;t Work.</span>
+            Everyone Sells the AI.{" "}
+            <span className="text-muted-foreground">Nobody Builds the Foundation.</span>
           </h2>
           <p 
             className={`mt-6 text-lg leading-relaxed text-muted-foreground transition-all duration-500 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            70% of AI projects fail. Not because the AI is bad. <span className="text-foreground font-medium">Because the data underneath it is a disaster.</span>
+            70% of AI projects fail. Not because the AI is bad. <span className="text-foreground font-medium">Because nobody does what we do first.</span>
           </p>
         </div>
 
@@ -159,22 +159,22 @@ export function ProblemSection() {
               You hired the agency. You bought the tools. You built the chatbot. And it gives wrong answers, misses context, and makes mistakes that embarrass your team in front of customers.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              <strong className="text-foreground">Why?</strong>{" "}Because every AI tool you plug in is reading from the same messy, duplicated, inconsistent data you&apos;ve been duct-taping together for years.
+              <strong className="text-foreground">Why?</strong>{" "}Because other AI companies skip the hard part. They bolt AI onto your existing mess and hope for the best.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Your customer records live in 4 different systems and none of them agree. Your spreadsheets have 3 versions of the same contact. Your CRM hasn&apos;t been cleaned since the last system migration.
+              We build AI systems that actually work - and the reason they work is because we do what nobody else bothers to do first. We start with the data.
             </p>
             
             {/* Pull quote with accent styling */}
             <blockquote className="my-12 py-8 px-8 border-l-4 border-accent bg-accent/5 rounded-r-2xl relative">
               <div className="absolute -top-4 left-6 text-6xl text-accent/20 font-serif">&ldquo;</div>
               <p className="font-serif text-2xl lg:text-3xl text-foreground leading-snug relative">
-                The AI industry has been selling you the roof before anyone poured the foundation.
+                The AI industry sells you the roof before anyone pours the foundation. We pour the foundation first.
               </p>
             </blockquote>
 
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Your AI is only as good as your data. And right now, <span className="inline-flex items-center gap-1 text-accent font-semibold">your data is probably terrible.</span>
+              That&apos;s our secret weapon. Not a fancier model. Not a better prompt. <span className="inline-flex items-center gap-1 text-accent font-semibold">A real foundation that makes everything else work.</span>
             </p>
           </div>
         </div>

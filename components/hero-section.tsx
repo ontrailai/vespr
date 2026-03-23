@@ -52,7 +52,7 @@ export function HeroSection() {
           >
             <Sparkles className="h-4 w-4 text-accent animate-pulse" />
             <span className="text-sm font-medium text-foreground">
-              For data-heavy businesses ready to get AI right
+              For businesses ready to run on AI
             </span>
           </div>
 
@@ -61,9 +61,9 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your AI Doesn&apos;t Have<br className="hidden sm:block" /> an AI Problem.{" "}
+            AI That Actually{" "}
             <span className="relative">
-              <span className="gradient-text">It Has a Data Problem.</span>
+              <span className="gradient-text">Does the Work.</span>
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
                 <path 
                   d="M2 8C50 2 100 2 150 6C200 10 250 10 298 4" 
@@ -81,7 +81,7 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Every AI agency skips the foundation. They hand you a chatbot built on messy, scattered, duplicate-filled data and wonder why it doesn&apos;t work. <span className="text-foreground font-medium">We start where the real problem is.</span>
+            Most AI tools answer questions. <span className="text-foreground font-medium">vespr. does the work</span> - connects your tools, learns your business, and runs your operations autonomously. We handle the data, the software, the AI, and the agents. You get the results.
           </p>
 
           <div 
@@ -95,7 +95,7 @@ export function HeroSection() {
               className="group gap-2 bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 h-14 text-base font-medium shadow-xl shadow-accent/25 transition-all hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-1 animate-pulse-glow"
             >
               <Link href="#pricing">
-                Start With Your Data
+                See How It Works
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
@@ -117,8 +117,8 @@ export function HeroSection() {
           >
             {[
               { value: "70%", label: "AI projects fail" },
-              { value: "80%", label: "Time on data cleanup" },
-              { value: "5", label: "Layers to success" },
+              { value: "20+", label: "Hours saved per week" },
+              { value: "26%", label: "Avg revenue lift" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <p className="font-serif text-3xl lg:text-4xl font-medium text-foreground">{stat.value}</p>

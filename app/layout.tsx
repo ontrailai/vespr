@@ -3,21 +3,21 @@ import { Plus_Jakarta_Sans, Fraunces } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const plusJakarta = Plus_Jakarta_Sans({ 
+const plusJakartaSans = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"]
-});
+})
 
-const fraunces = Fraunces({ 
+const frauncesFont = Fraunces({ 
   subsets: ["latin"],
   variable: "--font-serif",
   weight: ["400", "500", "600", "700"]
-});
+})
 
 export const metadata: Metadata = {
-  title: 'vespr. | Your AI Has a Data Problem',
-  description: 'Every AI agency skips the foundation. We start where the real problem is - your data. Then we build up from there, layer by layer, until your AI actually performs.',
+  title: 'vespr. | AI That Actually Does the Work',
+  description: 'Most AI tools answer questions. vespr. does the work - connects your tools, learns your business, and runs your operations autonomously.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${fraunces.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${plusJakartaSans.variable} ${frauncesFont.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         {children}
         <Analytics />

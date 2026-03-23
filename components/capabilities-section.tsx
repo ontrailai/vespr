@@ -95,14 +95,14 @@ export function CapabilitiesSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Clean Data Is Just the Beginning.
+            AI That Works For You.
           </h2>
           <p 
             className={`mt-4 font-serif text-2xl lg:text-3xl text-muted-foreground transition-all duration-500 delay-150 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Here&apos;s What Runs On Top of It.
+            24/7. Autonomous. Actually Useful.
           </p>
         </div>
 

@@ -93,22 +93,22 @@ export function SolutionSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Our Approach
+            How vespr. Works
           </span>
           <h2 
             className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1] transition-all duration-500 delay-100 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            We Build From the Ground Up.{" "}
-            <span className="text-muted-foreground">That&apos;s Why It Works.</span>
+            Five Layers.{" "}
+            <span className="text-muted-foreground">One System That Works.</span>
           </h2>
           <p 
             className={`mt-6 text-lg leading-relaxed text-muted-foreground transition-all duration-500 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Every other AI company starts at the top and hopes for the best. We start at the bottom and build each layer on a real foundation.
+            We don&apos;t just add AI to your business. We build the complete infrastructure - from data foundation to autonomous agents - so every layer makes the next one smarter.
           </p>
         </div>
 
@@ -276,10 +276,10 @@ export function SolutionSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-accent-secondary/5 animate-gradient" />
           <div className="relative">
             <p className="font-serif text-2xl lg:text-3xl text-foreground">
-              Every other company starts at layer 4. <span className="gradient-text font-semibold">We start at layer 1.</span>
+              Other companies sell you layer 4 or 5. <span className="gradient-text font-semibold">We build all five.</span>
             </p>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              The result? AI that actually works. Because it&apos;s built on a foundation that actually exists.
+              That&apos;s why vespr. works when everything else you&apos;ve tried hasn&apos;t.
             </p>
           </div>
         </div>
