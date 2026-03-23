@@ -61,9 +61,9 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            AI That Actually{" "}
+            We Build AI That Works.{" "}
             <span className="relative">
-              <span className="gradient-text">Does the Work.</span>
+              <span className="gradient-text">Because We Start Where Nobody Else Will.</span>
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
                 <path 
                   d="M2 8C50 2 100 2 150 6C200 10 250 10 298 4" 
@@ -81,7 +81,7 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Most AI tools answer questions. <span className="text-foreground font-medium">vespr. does the work</span> - connects your tools, learns your business, and runs your operations autonomously. We handle the data, the software, the AI, and the agents. You get the results.
+            Your data is the most valuable thing your business owns - and it&apos;s probably a mess. <span className="text-foreground font-medium">We fix that first.</span> Then we build AI that connects your tools, runs your workflows, and operates your business autonomously. One team. Every layer. Real results.
           </p>
 
           <div 
