@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Check, ArrowRight } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
 import Link from "next/link"
 
 const auditFeatures = [
@@ -22,53 +22,51 @@ const buildFeatures = [
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            One Team. One Stack. A Fraction of the Cost.
+    <section id="pricing" className="py-20 lg:py-28 bg-secondary/30">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">Pricing</p>
+          <h2 className="font-serif text-3xl font-normal tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-[1.15]">
+            One Team. One Stack.{" "}
+            <span className="text-muted-foreground">A Fraction of the Cost.</span>
           </h2>
-          <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             Most businesses end up paying $75K to $600K across 5 different vendors. A data cleaner. A database engineer. A dev shop. An AI consultant. An automation agency. None of them talk to each other.
-          </p>
-          <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-            {"We do the entire stack. One team builds every layer, from data cleanup to AI deployment. One team owns the outcome."}
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2 max-w-4xl mx-auto">
           {/* AI Readiness Audit */}
-          <div className="relative rounded-xl border border-border bg-card p-8">
+          <div className="relative bg-card rounded-2xl border border-border p-8 flex flex-col">
             <div className="absolute -top-3 left-6">
-              <span className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+              <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground border border-border">
                 Start Here
               </span>
             </div>
-            <div className="mt-4">
-              <h3 className="text-2xl font-bold text-foreground">
+            <div className="mt-2">
+              <h3 className="font-serif text-2xl text-foreground">
                 AI Readiness Audit
               </h3>
-              <p className="mt-2 text-muted-foreground">
+              <p className="mt-1 text-muted-foreground text-sm">
                 The smartest first step
               </p>
             </div>
             <div className="mt-6">
-              <p className="text-4xl font-bold text-foreground">
-                $2,500 - $5,000
-              </p>
+              <span className="font-serif text-4xl text-foreground">$2,500</span>
+              <span className="text-muted-foreground"> - $5,000</span>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
               We look at your data across every system, identify the gaps, score your AI readiness, and give you a clear roadmap. You walk away knowing exactly where you stand.
             </p>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-6 space-y-3 flex-grow">
               {auditFeatures.map((feature) => (
                 <li key={feature} className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                   <span className="text-sm text-muted-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
-            <Button className="mt-8 w-full gap-2" variant="outline" asChild>
+            <Button className="mt-8 w-full gap-2 rounded-full h-11" variant="outline" asChild>
               <Link href="mailto:hello@ai-operators.com">
                 Book Your Audit
                 <ArrowRight className="h-4 w-4" />
@@ -77,33 +75,34 @@ export function PricingSection() {
           </div>
 
           {/* Full Build */}
-          <div className="relative rounded-xl border-2 border-accent bg-card p-8">
+          <div className="relative bg-card rounded-2xl border-2 border-accent p-8 flex flex-col shadow-xl shadow-accent/10">
             <div className="absolute -top-3 left-6">
-              <span className="rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
-                Full Solution
+              <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
+                Most Popular
               </span>
             </div>
-            <div className="mt-4">
-              <h3 className="text-2xl font-bold text-foreground">Full Build</h3>
-              <p className="mt-2 text-muted-foreground">
+            <div className="mt-2">
+              <h3 className="font-serif text-2xl text-foreground">Full Build</h3>
+              <p className="mt-1 text-muted-foreground text-sm">
                 Complete data-to-AI transformation
               </p>
             </div>
             <div className="mt-6">
-              <p className="text-4xl font-bold text-foreground">Custom Scoped</p>
+              <span className="font-serif text-4xl text-foreground">Custom</span>
+              <span className="text-muted-foreground"> scoped</span>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
               After the audit, we scope the full engagement based on your data complexity and business goals. Every project includes all 5 layers.
             </p>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-6 space-y-3 flex-grow">
               {buildFeatures.map((feature) => (
                 <li key={feature} className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                   <span className="text-sm text-muted-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
-            <Button className="mt-8 w-full gap-2" asChild>
+            <Button className="mt-8 w-full gap-2 rounded-full h-11 bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
               <Link href="mailto:hello@ai-operators.com">
                 Start With Your Data
                 <ArrowRight className="h-4 w-4" />
@@ -112,12 +111,13 @@ export function PricingSection() {
           </div>
         </div>
 
-        <div className="mt-12 rounded-xl border border-border bg-card/50 p-8 text-center">
-          <p className="text-lg font-medium text-foreground">
+        {/* Why this beats the alternative */}
+        <div className="mt-16 max-w-3xl mx-auto text-center">
+          <h3 className="font-serif text-xl text-foreground mb-4">
             Why this beats the alternative
-          </p>
-          <p className="mt-2 text-muted-foreground">
-            Five vendors means five timelines, five contracts, five points of failure, and nobody responsible for the end result. One team means one timeline, one relationship, and one group of people who won't ship layer 4 until layers 1 through 3 are rock solid.
+          </h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Five vendors means five timelines, five contracts, five points of failure, and nobody responsible for the end result. One team means one timeline, one relationship, and one group of people who won&apos;t ship layer 4 until layers 1 through 3 are rock solid.
           </p>
         </div>
       </div>
