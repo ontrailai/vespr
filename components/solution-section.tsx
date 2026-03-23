@@ -39,11 +39,11 @@ const layers = [
   },
   {
     number: 5,
-    title: "Agent Orchestration",
+    title: "Agent Orchestration (Scout)",
     color: "#E5A84B",
     icon: Bot,
     description:
-      "An AI operating system that manages your workflows, coordinates tasks across your business, and keeps getting smarter over time. This is the layer everyone wants to skip to. It only works when the four layers below it are solid.",
+      "Scout - our AI operating system that manages your workflows, coordinates tasks across your business, and keeps getting smarter over time. This is the layer everyone wants to skip to. It only works when the four layers below it are solid.",
   },
 ]
 
@@ -279,7 +279,7 @@ export function SolutionSection() {
               Other companies sell you layer 4 or 5. <span className="gradient-text font-semibold">We build all five.</span>
             </p>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              That&apos;s why vespr. works when everything else you&apos;ve tried hasn&apos;t.
+              That&apos;s why Scout works when everything else you&apos;ve tried hasn&apos;t.
             </p>
           </div>
         </div>

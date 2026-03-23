@@ -20,7 +20,7 @@ const capabilities = [
   {
     icon: Zap,
     title: "Actually Does the Work",
-    description: "Not a chatbot. vespr. runs your processes: sends follow-ups, updates your CRM, processes intake forms, generates reports, manages your pipeline. Real tasks, completed autonomously.",
+    description: "Not a chatbot. Scout runs your processes: sends follow-ups, updates your CRM, processes intake forms, generates reports, manages your pipeline. Real tasks, completed autonomously.",
     color: "#D97756"
   },
   {
@@ -38,7 +38,7 @@ const capabilities = [
   {
     icon: Clock,
     title: "24/7 Autonomous Operations",
-    description: "vespr. monitors overnight, catches issues before you wake up, and sends morning briefings. Leads from 2 AM are qualified and in your pipeline by 8 AM.",
+    description: "Scout monitors overnight, catches issues before you wake up, and sends morning briefings. Leads from 2 AM are qualified and in your pipeline by 8 AM.",
     color: "#E5A84B"
   },
   {
