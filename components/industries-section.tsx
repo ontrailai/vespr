@@ -2,35 +2,35 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Stethoscope, Scale, Shield, Building2, Sparkles } from "lucide-react"
+import { ArrowRight, HeartPulse, Landmark, Umbrella, MapPin, Sparkles } from "lucide-react"
 import Link from "next/link"
 
 const industries = [
   {
     id: "healthcare",
     title: "Healthcare",
-    icon: Stethoscope,
+    icon: HeartPulse,
     color: "#4A9B94",
     description: "Patient records in 6 systems. Compliance documentation scattered across shared drives. Your EHR says one thing, your billing says another. We clean the data, connect the systems, and deploy AI that actually understands your patients.",
   },
   {
     id: "legal",
     title: "Legal",
-    icon: Scale,
+    icon: Landmark,
     color: "#5B8FD9",
     description: "Case files in folders nobody can find. Billing disconnected from matter management. Associates spending hours on research that should take minutes. We build the data foundation, then put AI to work on intake, research, and document management.",
   },
   {
     id: "insurance",
     title: "Insurance",
-    icon: Shield,
+    icon: Umbrella,
     color: "#8B6DB3",
     description: "Claims data in silos. Underwriting running on outdated spreadsheets. Policy information that lives in 4 places and agrees in none of them. We unify your data, then deploy agents that process claims, flag fraud, and route renewals automatically.",
   },
   {
     id: "realestate",
     title: "Real Estate",
-    icon: Building2,
+    icon: MapPin,
     color: "#D97756",
     description: "Leads in 3 CRMs. Transactions tracked in spreadsheets. Market data copy-pasted from Zillow. No single view of your pipeline. We centralize everything into one clean system, then let AI handle lead scoring, follow-ups, and market analysis.",
   },
@@ -136,17 +136,22 @@ export function IndustriesSection() {
                       : 'bg-transparent border border-transparent hover:bg-secondary/50'
                   }`}
                 >
-                  <div 
+                  <div
                     className={`flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 ${
                       isActive ? 'scale-110' : ''
                     }`}
-                    style={{ 
-                      backgroundColor: isActive ? `${industry.color}20` : 'var(--secondary)',
+                    style={{
+                      background: isActive
+                        ? `linear-gradient(135deg, ${industry.color}25 0%, ${industry.color}0A 100%)`
+                        : 'var(--secondary)',
+                      border: isActive ? `1.5px solid ${industry.color}20` : '1.5px solid transparent',
+                      boxShadow: isActive ? `inset 0 1px 1px ${industry.color}15` : 'none'
                     }}
                   >
-                    <Icon 
-                      className="h-6 w-6 transition-colors duration-300" 
+                    <Icon
+                      className="h-6 w-6 transition-colors duration-300"
                       style={{ color: isActive ? industry.color : 'var(--muted-foreground)' }}
+                      strokeWidth={1.5}
                     />
                   </div>
                   <div className="flex-1">

@@ -1,48 +1,48 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { 
-  Plug, 
-  Zap, 
-  Brain, 
-  Users, 
-  Clock, 
-  Shield 
+import {
+  Waypoints,
+  Rocket,
+  Dna,
+  Orbit,
+  Eye,
+  Fingerprint
 } from "lucide-react"
 
 const capabilities = [
   {
-    icon: Plug,
+    icon: Waypoints,
     title: "Connects to Your Entire Stack",
     description: "Plugs directly into GoHighLevel, HubSpot, Gmail, Slack, your CRM, and project tools. No switching platforms. It sits on top and connects everything.",
     color: "#4A9B94"
   },
   {
-    icon: Zap,
+    icon: Rocket,
     title: "Actually Does the Work",
     description: "Not a chatbot. Scout runs your processes: sends follow-ups, updates your CRM, processes intake forms, generates reports, manages your pipeline. Real tasks, completed autonomously.",
     color: "#D97756"
   },
   {
-    icon: Brain,
+    icon: Dna,
     title: "Learns Your Business Over Time",
     description: "Persistent memory that remembers your clients, preferences, workflows, and terminology. By month 3, it knows your business better than your newest hire.",
     color: "#8B6DB3"
   },
   {
-    icon: Users,
+    icon: Orbit,
     title: "Multi-Agent Orchestration",
     description: "Research agents gather intel. Writing agents draft communications. Operations agents manage your pipeline. They coordinate automatically. Team output without the headcount.",
     color: "#5B8FD9"
   },
   {
-    icon: Clock,
+    icon: Eye,
     title: "24/7 Autonomous Operations",
     description: "Scout monitors overnight, catches issues before you wake up, and sends morning briefings. Leads from 2 AM are qualified and in your pipeline by 8 AM.",
     color: "#E5A84B"
   },
   {
-    icon: Shield,
+    icon: Fingerprint,
     title: "Your Data Stays Yours",
     description: "Everything runs on your infrastructure. Your data never trains someone else's model. No shared databases, no multi-tenant risks. Private, secure, yours.",
     color: "#4A9B94"
@@ -131,16 +131,20 @@ export function CapabilitiesSection() {
                 />
 
                 {/* Icon */}
-                <div 
+                <div
                   className="relative flex h-14 w-14 items-center justify-center rounded-xl mb-6 transition-all duration-300 group-hover:scale-110"
-                  style={{ 
-                    backgroundColor: `${capability.color}15`,
-                    boxShadow: isHovered ? `0 8px 24px ${capability.color}25` : 'none'
+                  style={{
+                    background: `linear-gradient(135deg, ${capability.color}22 0%, ${capability.color}0A 100%)`,
+                    border: `1.5px solid ${capability.color}20`,
+                    boxShadow: isHovered
+                      ? `0 8px 24px ${capability.color}25, inset 0 1px 1px ${capability.color}15`
+                      : `inset 0 1px 1px ${capability.color}10`
                   }}
                 >
-                  <Icon 
-                    className="h-7 w-7 transition-transform duration-300 group-hover:scale-110" 
+                  <Icon
+                    className="h-7 w-7 transition-transform duration-300 group-hover:scale-110"
                     style={{ color: capability.color }}
+                    strokeWidth={1.5}
                   />
                 </div>
 

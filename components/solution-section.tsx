@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
-import { Database, Server, Code, Brain, Bot } from "lucide-react"
+import { HardDrive, Boxes, Terminal, Cpu, Workflow } from "lucide-react"
 
 const layers = [
   {
     number: 1,
     title: "Data Cleanup & Organization",
     color: "#4A9B94",
-    icon: Database,
+    icon: HardDrive,
     description:
       "We audit every system you use, find the mess, and fix it. Duplicates, inconsistencies, missing fields, scattered records across platforms - we clean it all and get your data into shape.",
   },
@@ -17,7 +17,7 @@ const layers = [
     number: 2,
     title: "Database Architecture",
     color: "#5B8FD9",
-    icon: Server,
+    icon: Boxes,
     description:
       "We build a proper structured database that becomes your single source of truth. No more wondering which spreadsheet has the right number. One place. One answer. Always accurate.",
   },
@@ -25,7 +25,7 @@ const layers = [
     number: 3,
     title: "Custom Software",
     color: "#8B6DB3",
-    icon: Code,
+    icon: Terminal,
     description:
       "We build the tools and interfaces your business actually needs on top of that clean foundation. Not off-the-shelf software you have to bend your workflow around. Software that fits how you already work.",
   },
@@ -33,7 +33,7 @@ const layers = [
     number: 4,
     title: "AI Layer",
     color: "#D97756",
-    icon: Brain,
+    icon: Cpu,
     description:
       "Now we add AI. And it actually works. Because it's pulling from clean, structured, reliable data instead of the chaos most companies feed their models.",
   },
@@ -41,7 +41,7 @@ const layers = [
     number: 5,
     title: "Agent Orchestration (Scout)",
     color: "#E5A84B",
-    icon: Bot,
+    icon: Workflow,
     description:
       "Scout - our AI operating system that manages your workflows, coordinates tasks across your business, and keeps getting smarter over time. This is the layer everyone wants to skip to. It only works when the four layers below it are solid.",
   },
@@ -234,12 +234,14 @@ export function SolutionSection() {
                         "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white transition-all duration-300",
                         isActive ? "scale-110 shadow-lg" : "opacity-70 group-hover:opacity-100"
                       )}
-                      style={{ 
-                        backgroundColor: layer.color,
-                        boxShadow: isActive ? `0 8px 24px ${layer.color}40` : 'none'
+                      style={{
+                        background: `linear-gradient(135deg, ${layer.color} 0%, ${layer.color}CC 100%)`,
+                        boxShadow: isActive
+                          ? `0 8px 24px ${layer.color}40, inset 0 1px 1px rgba(255,255,255,0.2)`
+                          : 'inset 0 1px 1px rgba(255,255,255,0.15)'
                       }}
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
