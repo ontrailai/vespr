@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import {
   Accordion,
   AccordionContent,
@@ -51,27 +52,71 @@ const faqs = [
 ]
 
 export function FaqSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="faq" className="py-20 lg:py-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <section id="faq" ref={sectionRef} className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+      <div className="absolute top-20 -right-20 w-60 h-60 bg-accent-secondary/5 rounded-full blur-3xl" />
+      
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
-          <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">FAQ</p>
-          <h2 className="font-serif text-3xl font-normal tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-[1.15]">
+          <span 
+            className={`inline-block text-accent font-semibold mb-4 tracking-widest uppercase text-xs transition-all duration-500 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            FAQ
+          </span>
+          <h2 
+            className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl leading-[1.1] transition-all duration-500 delay-100 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
             Common Questions
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p 
+            className={`mt-6 text-lg leading-relaxed text-muted-foreground transition-all duration-500 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
             Everything you need to know about how we work.
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-3">
+        <Accordion 
+          type="single" 
+          collapsible 
+          className={`space-y-3 transition-all duration-500 delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
           {faqs.map((faq, index) => (
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-accent/30 data-[state=open]:shadow-lg transition-all"
+              className="bg-card border border-border rounded-2xl px-6 overflow-hidden transition-all duration-300 hover:border-accent/30 data-[state=open]:border-accent/50 data-[state=open]:shadow-lg data-[state=open]:bg-card"
             >
-              <AccordionTrigger className="text-left text-foreground hover:text-accent py-5 text-base font-medium hover:no-underline">
+              <AccordionTrigger className="text-left text-foreground hover:text-accent py-5 text-base font-semibold hover:no-underline [&[data-state=open]]:text-accent transition-colors">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
@@ -80,6 +125,23 @@ export function FaqSection() {
             </AccordionItem>
           ))}
         </Accordion>
+
+        {/* Bottom CTA */}
+        <div 
+          className={`mt-12 text-center transition-all duration-500 delay-400 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          <p className="text-muted-foreground">
+            Still have questions?{" "}
+            <a 
+              href="mailto:hello@ai-operators.com" 
+              className="text-accent font-semibold hover:underline underline-offset-4 transition-colors"
+            >
+              Get in touch
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   )

@@ -2,40 +2,46 @@
 
 import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
+import { Database, Server, Code, Brain, Bot } from "lucide-react"
 
 const layers = [
   {
     number: 1,
     title: "Data Cleanup & Organization",
-    color: "bg-[oklch(0.55_0.12_180)]", // teal
+    color: "#4A9B94",
+    icon: Database,
     description:
       "We audit every system you use, find the mess, and fix it. Duplicates, inconsistencies, missing fields, scattered records across platforms - we clean it all and get your data into shape.",
   },
   {
     number: 2,
     title: "Database Architecture",
-    color: "bg-[oklch(0.60_0.15_250)]", // blue
+    color: "#5B8FD9",
+    icon: Server,
     description:
       "We build a proper structured database that becomes your single source of truth. No more wondering which spreadsheet has the right number. One place. One answer. Always accurate.",
   },
   {
     number: 3,
     title: "Custom Software",
-    color: "bg-[oklch(0.58_0.18_280)]", // purple
+    color: "#8B6DB3",
+    icon: Code,
     description:
       "We build the tools and interfaces your business actually needs on top of that clean foundation. Not off-the-shelf software you have to bend your workflow around. Software that fits how you already work.",
   },
   {
     number: 4,
     title: "AI Layer",
-    color: "bg-[oklch(0.62_0.18_35)]", // coral/terracotta
+    color: "#D97756",
+    icon: Brain,
     description:
       "Now we add AI. And it actually works. Because it's pulling from clean, structured, reliable data instead of the chaos most companies feed their models.",
   },
   {
     number: 5,
     title: "Agent Orchestration",
-    color: "bg-[oklch(0.70_0.15_50)]", // warm orange
+    color: "#E5A84B",
+    icon: Bot,
     description:
       "An AI operating system that manages your workflows, coordinates tasks across your business, and keeps getting smarter over time. This is the layer everyone wants to skip to. It only works when the four layers below it are solid.",
   },
@@ -43,82 +49,138 @@ const layers = [
 
 export function SolutionSection() {
   const [activeLayer, setActiveLayer] = useState(0)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return
-      const rect = sectionRef.current.getBoundingClientRect()
-      const sectionHeight = rect.height
-      const viewportHeight = window.innerHeight
-      const scrolled = -rect.top + viewportHeight * 0.5
-      const progress = Math.min(Math.max(scrolled / sectionHeight, 0), 1)
-      setScrollProgress(progress)
-      
-      // Update active layer based on scroll
-      const newLayer = Math.min(Math.floor(progress * 5), 4)
-      if (newLayer !== activeLayer && newLayer >= 0) {
-        setActiveLayer(newLayer)
-      }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.15 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [activeLayer])
+    return () => observer.disconnect()
+  }, [])
+
+  // Auto-advance layers
+  useEffect(() => {
+    if (!isVisible) return
+    const timer = setInterval(() => {
+      setActiveLayer((prev) => (prev + 1) % 5)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [isVisible])
 
   return (
-    <section id="solution" ref={sectionRef} className="py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="solution" ref={sectionRef} className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-20 w-60 h-60 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent-secondary/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative">
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">Our Approach</p>
-          <h2 className="font-serif text-3xl font-normal tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-[1.15]">
+          <span 
+            className={`inline-block text-accent font-semibold mb-4 tracking-widest uppercase text-xs transition-all duration-500 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            Our Approach
+          </span>
+          <h2 
+            className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1] transition-all duration-500 delay-100 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
             We Build From the Ground Up.{" "}
             <span className="text-muted-foreground">That&apos;s Why It Works.</span>
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p 
+            className={`mt-6 text-lg leading-relaxed text-muted-foreground transition-all duration-500 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
             Every other AI company starts at the top and hopes for the best. We start at the bottom and build each layer on a real foundation.
           </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
-          {/* Interactive layer stack */}
-          <div className="lg:sticky lg:top-24 order-2 lg:order-1">
-            <div className="bg-card border border-border rounded-2xl p-8">
-              {/* Visual layer stack */}
-              <div className="flex flex-col-reverse gap-2 mb-8">
-                {layers.map((layer, index) => (
-                  <button
-                    key={layer.number}
-                    onClick={() => setActiveLayer(index)}
-                    className={cn(
-                      "h-12 rounded-lg transition-all duration-500 flex items-center justify-between px-4",
-                      layer.color,
-                      index <= activeLayer 
-                        ? "opacity-100 scale-100" 
-                        : "opacity-30 scale-95",
-                      activeLayer === index && "ring-2 ring-foreground/20 ring-offset-2 ring-offset-background"
-                    )}
-                  >
-                    <span className="text-white font-medium text-sm">
-                      Layer {layer.number}
-                    </span>
-                    <span className="text-white/80 text-xs hidden sm:block">
-                      {layer.title}
-                    </span>
-                  </button>
-                ))}
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          {/* Interactive layer stack visualization */}
+          <div 
+            className={`order-2 lg:order-1 transition-all duration-700 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="bg-card border border-border rounded-3xl p-8 lg:p-10 relative overflow-hidden">
+              {/* Animated background glow based on active layer */}
+              <div 
+                className="absolute inset-0 opacity-10 transition-all duration-700"
+                style={{ background: `radial-gradient(circle at 50% 100%, ${layers[activeLayer].color} 0%, transparent 60%)` }}
+              />
+              
+              {/* 3D-ish layer stack */}
+              <div className="relative h-[320px] flex flex-col justify-end items-center mb-8 perspective-1000">
+                {layers.map((layer, index) => {
+                  const isActive = index <= activeLayer
+                  const isCurrent = index === activeLayer
+                  const Icon = layer.icon
+                  
+                  return (
+                    <button
+                      key={layer.number}
+                      onClick={() => setActiveLayer(index)}
+                      className={cn(
+                        "w-full max-w-xs h-14 rounded-xl transition-all duration-500 flex items-center justify-between px-5 relative overflow-hidden",
+                        isCurrent && "ring-2 ring-offset-2 ring-offset-card z-10 scale-105",
+                        !isActive && "opacity-40 scale-90"
+                      )}
+                      style={{ 
+                        backgroundColor: layer.color,
+                        marginTop: index === 0 ? 0 : '-8px',
+                        transform: `translateY(${(4 - index) * 4}px) scale(${isActive ? 1 : 0.95})`,
+                        zIndex: index + 1,
+                        boxShadow: isCurrent ? `0 10px 40px ${layer.color}50` : 'none'
+                      }}
+                    >
+                      {/* Shimmer effect on active */}
+                      {isCurrent && (
+                        <div className="absolute inset-0 animate-shimmer" />
+                      )}
+                      
+                      <div className="flex items-center gap-3 relative">
+                        <Icon className="h-5 w-5 text-white" />
+                        <span className="text-white font-semibold text-sm">
+                          Layer {layer.number}
+                        </span>
+                      </div>
+                      <span className="text-white/80 text-xs font-medium hidden sm:block relative">
+                        {layer.title}
+                      </span>
+                    </button>
+                  )
+                })}
               </div>
 
               {/* Layer detail */}
-              <div className="space-y-3">
+              <div className="space-y-4 relative">
                 <div className="flex items-center gap-3">
-                  <div className={cn("h-3 w-3 rounded-full", layers[activeLayer].color)} />
+                  <div 
+                    className="h-3 w-3 rounded-full animate-pulse"
+                    style={{ backgroundColor: layers[activeLayer].color }}
+                  />
                   <p className="text-sm font-medium text-muted-foreground">
                     Layer {layers[activeLayer].number} of 5
                   </p>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">
+                <h3 className="text-2xl font-semibold text-foreground">
                   {layers[activeLayer].title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -126,16 +188,19 @@ export function SolutionSection() {
                 </p>
               </div>
 
-              {/* Progress indicator */}
+              {/* Progress bar */}
               <div className="mt-8 pt-6 border-t border-border">
-                <div className="flex justify-between items-center text-xs text-muted-foreground mb-2">
+                <div className="flex justify-between items-center text-xs text-muted-foreground mb-3">
                   <span>Foundation</span>
                   <span>Full AI Capabilities</span>
                 </div>
                 <div className="h-2 bg-secondary rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-accent transition-all duration-300 rounded-full"
-                    style={{ width: `${((activeLayer + 1) / 5) * 100}%` }}
+                    className="h-full rounded-full transition-all duration-500"
+                    style={{ 
+                      width: `${((activeLayer + 1) / 5) * 100}%`,
+                      backgroundColor: layers[activeLayer].color
+                    }}
                   />
                 </div>
               </div>
@@ -143,55 +208,80 @@ export function SolutionSection() {
           </div>
 
           {/* Layer list */}
-          <div className="space-y-4 order-1 lg:order-2">
-            {layers.map((layer, index) => (
-              <button
-                key={layer.number}
-                onClick={() => setActiveLayer(index)}
-                className={cn(
-                  "w-full text-left p-6 rounded-xl border transition-all duration-300",
-                  activeLayer === index
-                    ? "bg-card border-accent/50 shadow-lg"
-                    : "bg-transparent border-border hover:border-accent/30 hover:bg-card/50"
-                )}
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white font-bold text-sm transition-all",
-                      layer.color,
-                      activeLayer === index ? "scale-110" : ""
-                    )}
-                  >
-                    {layer.number}
+          <div 
+            className={`space-y-3 order-1 lg:order-2 transition-all duration-700 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {layers.map((layer, index) => {
+              const Icon = layer.icon
+              const isActive = activeLayer === index
+              
+              return (
+                <button
+                  key={layer.number}
+                  onClick={() => setActiveLayer(index)}
+                  className={cn(
+                    "w-full text-left p-5 rounded-2xl border transition-all duration-300 group",
+                    isActive
+                      ? "bg-card border-accent/50 shadow-xl"
+                      : "bg-transparent border-border hover:border-accent/30 hover:bg-card/50"
+                  )}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={cn(
+                        "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white transition-all duration-300",
+                        isActive ? "scale-110 shadow-lg" : "opacity-70 group-hover:opacity-100"
+                      )}
+                      style={{ 
+                        backgroundColor: layer.color,
+                        boxShadow: isActive ? `0 8px 24px ${layer.color}40` : 'none'
+                      }}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-semibold text-muted-foreground">0{layer.number}</span>
+                        <h3 className={cn(
+                          "font-semibold transition-colors truncate",
+                          isActive ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"
+                        )}>
+                          {layer.title}
+                        </h3>
+                      </div>
+                      <div className={cn(
+                        "overflow-hidden transition-all duration-300",
+                        isActive ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
+                      )}>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {layer.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className={cn(
-                      "font-semibold transition-colors",
-                      activeLayer === index ? "text-foreground" : "text-muted-foreground"
-                    )}>
-                      {layer.title}
-                    </h3>
-                    {activeLayer === index && (
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        {layer.description}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </button>
-            ))}
+                </button>
+              )
+            })}
           </div>
         </div>
 
         {/* Bottom callout */}
-        <div className="mt-16 bg-accent/10 border border-accent/20 rounded-2xl p-8 text-center">
-          <p className="font-serif text-xl lg:text-2xl text-foreground">
-            Every other company starts at layer 4. <span className="text-accent">We start at layer 1.</span>
-          </p>
-          <p className="mt-3 text-muted-foreground">
-            The result? AI that actually works. Because it&apos;s built on a foundation that actually exists.
-          </p>
+        <div 
+          className={`mt-16 bg-gradient-to-r from-accent/10 via-accent/5 to-accent-secondary/10 border border-accent/20 rounded-3xl p-8 lg:p-10 text-center relative overflow-hidden transition-all duration-700 delay-600 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-accent-secondary/5 animate-gradient" />
+          <div className="relative">
+            <p className="font-serif text-2xl lg:text-3xl text-foreground">
+              Every other company starts at layer 4. <span className="gradient-text font-semibold">We start at layer 1.</span>
+            </p>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+              The result? AI that actually works. Because it&apos;s built on a foundation that actually exists.
+            </p>
+          </div>
         </div>
       </div>
     </section>
