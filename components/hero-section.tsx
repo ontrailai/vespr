@@ -135,7 +135,7 @@ export function HeroSection() {
           }`}
         >
           <p className="text-center text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Built for healthcare, legal, insurance, and real estate teams who are tired of AI that doesn&apos;t work.
+            Built for businesses that run on data and are tired of AI that doesn&apos;t.
           </p>
         </div>
       </div>
