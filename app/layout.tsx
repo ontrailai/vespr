@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
-import { Inter, Instrument_Serif } from 'next/font/google'
+import { Plus_Jakarta_Sans, Fraunces } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const plusJakarta = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
-  variable: "--font-sans"
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"]
 });
 
-const instrumentSerif = Instrument_Serif({ 
-  weight: "400",
+const fraunces = Fraunces({ 
   subsets: ["latin"],
-  variable: "--font-serif"
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"]
 });
 
 export const metadata: Metadata = {
