@@ -16,23 +16,15 @@ const fontSerif = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: 'vespr. | We Build AI That Works',
+  title: 'vespr. | AI Built Right',
   description: 'vespr. builds AI systems that actually work. Scout, our AI operating system, connects your tools, learns your business, and runs your operations autonomously.',
   generator: 'v0.app',
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: '/apple-icon.png',
   },
