@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { DynamicOrb } from "@/components/dynamic-orb"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -14,23 +15,28 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-32">
+      {/* Dynamic Orb - positioned on the right side */}
+      <div className="absolute top-20 right-0 lg:right-[5%] xl:right-[10%] hidden lg:block pointer-events-none">
+        <DynamicOrb />
+      </div>
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large gradient orb */}
+        {/* Large gradient orb - adjusted position to not compete with dynamic orb */}
         <div 
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl animate-float"
-          style={{ background: "radial-gradient(circle, #D97756 0%, transparent 70%)" }}
+          className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl animate-float"
+          style={{ background: "radial-gradient(circle, #4A9B94 0%, transparent 70%)" }}
         />
         <div 
           className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl animate-float"
           style={{ background: "radial-gradient(circle, #4A9B94 0%, transparent 70%)", animationDelay: "3s" }}
         />
         
-        {/* Floating geometric shapes */}
+        {/* Floating geometric shapes - adjusted positions */}
         <div className="absolute top-1/4 left-[10%] w-4 h-4 bg-accent/30 rounded-full animate-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/3 right-[15%] w-6 h-6 bg-accent-secondary/30 rounded-lg rotate-45 animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/3 left-[85%] w-6 h-6 bg-accent-secondary/30 rounded-lg rotate-45 animate-float lg:hidden" style={{ animationDelay: "2s" }} />
         <div className="absolute bottom-1/4 left-[20%] w-3 h-3 bg-accent/40 rounded-full animate-float" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 right-[10%] w-5 h-5 border-2 border-accent/30 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
+        <div className="absolute top-1/2 left-[5%] w-5 h-5 border-2 border-accent/30 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
         
         {/* Grid pattern */}
         <div 
