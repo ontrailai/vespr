@@ -5,8 +5,10 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState, useRef } from "react"
 
-function FloatingParticles() {
+function InteractiveBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const mouseRef = useRef({ x: -1000, y: -1000 })
+  const trailRef = useRef<Array<{ x: number; y: number; age: number }>>([])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -22,54 +24,208 @@ function FloatingParticles() {
     resizeCanvas()
     window.addEventListener("resize", resizeCanvas)
 
-    // Small floating particles
+    // Grid settings
+    const gridSpacing = 50
+    const dotBaseSize = 1.5
+    const mouseRadius = 150
+
+    // Floating particles
     const particles: Array<{
       x: number
       y: number
+      baseX: number
+      baseY: number
       size: number
       speedX: number
       speedY: number
-      opacity: number
       color: string
     }> = []
 
     const colors = [
-      "rgba(217, 119, 86, 0.4)",  // Terracotta
-      "rgba(74, 155, 148, 0.4)",  // Teal
-      "rgba(139, 126, 102, 0.3)", // Warm gray
+      "#D97756",  // Terracotta
+      "#4A9B94",  // Teal
+      "#8B7E66",  // Warm gray
     ]
 
-    // Create particles
-    for (let i = 0; i < 20; i++) {
+    // Create floating particles
+    for (let i = 0; i < 30; i++) {
+      const x = Math.random() * canvas.width
+      const y = Math.random() * canvas.height
       particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.4 + 0.1,
+        x,
+        y,
+        baseX: x,
+        baseY: y,
+        size: Math.random() * 3 + 2,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3,
         color: colors[Math.floor(Math.random() * colors.length)]
       })
     }
+
+    // Mouse move handler
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      mouseRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      }
+      // Add to trail
+      trailRef.current.push({
+        x: mouseRef.current.x,
+        y: mouseRef.current.y,
+        age: 0
+      })
+      // Limit trail length
+      if (trailRef.current.length > 30) {
+        trailRef.current.shift()
+      }
+    }
+
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 }
+    }
+
+    canvas.addEventListener("mousemove", handleMouseMove)
+    canvas.addEventListener("mouseleave", handleMouseLeave)
 
     let animationId: number
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      const mouse = mouseRef.current
 
+      // Draw subtle grid pattern
+      ctx.strokeStyle = "rgba(45, 42, 38, 0.04)"
+      ctx.lineWidth = 1
+      
+      // Vertical lines
+      for (let x = 0; x < canvas.width; x += gridSpacing) {
+        ctx.beginPath()
+        ctx.moveTo(x, 0)
+        ctx.lineTo(x, canvas.height)
+        ctx.stroke()
+      }
+      
+      // Horizontal lines
+      for (let y = 0; y < canvas.height; y += gridSpacing) {
+        ctx.beginPath()
+        ctx.moveTo(0, y)
+        ctx.lineTo(canvas.width, y)
+        ctx.stroke()
+      }
+
+      // Draw interactive grid dots
+      for (let x = 0; x < canvas.width; x += gridSpacing) {
+        for (let y = 0; y < canvas.height; y += gridSpacing) {
+          const dx = mouse.x - x
+          const dy = mouse.y - y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+          
+          let size = dotBaseSize
+          let opacity = 0.15
+          let color = "45, 42, 38"
+
+          if (distance < mouseRadius) {
+            const influence = 1 - distance / mouseRadius
+            size = dotBaseSize + influence * 4
+            opacity = 0.15 + influence * 0.5
+            // Blend to accent color when close
+            if (influence > 0.5) {
+              color = "217, 119, 86" // Terracotta
+            } else if (influence > 0.3) {
+              color = "74, 155, 148" // Teal
+            }
+          }
+
+          ctx.beginPath()
+          ctx.arc(x, y, size, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${color}, ${opacity})`
+          ctx.fill()
+        }
+      }
+
+      // Draw mouse trail
+      trailRef.current.forEach((point, index) => {
+        point.age++
+        const alpha = Math.max(0, 1 - point.age / 40)
+        const size = Math.max(0, 4 * (1 - point.age / 40))
+        
+        if (alpha > 0 && size > 0) {
+          ctx.beginPath()
+          ctx.arc(point.x, point.y, size, 0, Math.PI * 2)
+          const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, size)
+          gradient.addColorStop(0, `rgba(217, 119, 86, ${alpha * 0.6})`)
+          gradient.addColorStop(1, `rgba(74, 155, 148, ${alpha * 0.2})`)
+          ctx.fillStyle = gradient
+          ctx.fill()
+        }
+      })
+
+      // Remove old trail points
+      trailRef.current = trailRef.current.filter(p => p.age < 40)
+
+      // Draw and update floating particles
       particles.forEach((particle) => {
+        // Drift movement
         particle.x += particle.speedX
         particle.y += particle.speedY
 
+        // Wrap around
         if (particle.x < 0) particle.x = canvas.width
         if (particle.x > canvas.width) particle.x = 0
         if (particle.y < 0) particle.y = canvas.height
         if (particle.y > canvas.height) particle.y = 0
 
+        // Mouse interaction - particles get pushed away slightly
+        const dx = particle.x - mouse.x
+        const dy = particle.y - mouse.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        
+        if (distance < mouseRadius && distance > 0) {
+          const force = (mouseRadius - distance) / mouseRadius * 0.5
+          particle.x += (dx / distance) * force
+          particle.y += (dy / distance) * force
+        }
+
+        // Draw particle with glow
+        const gradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.size * 2
+        )
+        gradient.addColorStop(0, particle.color + "40")
+        gradient.addColorStop(0.5, particle.color + "20")
+        gradient.addColorStop(1, "transparent")
+        
         ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = particle.color
+        ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2)
+        ctx.fillStyle = gradient
         ctx.fill()
+
+        // Core dot
+        ctx.beginPath()
+        ctx.arc(particle.x, particle.y, particle.size * 0.5, 0, Math.PI * 2)
+        ctx.fillStyle = particle.color + "60"
+        ctx.fill()
+      })
+
+      // Draw connections between nearby particles
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach(p2 => {
+          const dx = p1.x - p2.x
+          const dy = p1.y - p2.y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+          
+          if (distance < 120) {
+            const opacity = (1 - distance / 120) * 0.08
+            ctx.beginPath()
+            ctx.moveTo(p1.x, p1.y)
+            ctx.lineTo(p2.x, p2.y)
+            ctx.strokeStyle = `rgba(139, 126, 102, ${opacity})`
+            ctx.lineWidth = 1
+            ctx.stroke()
+          }
+        })
       })
 
       animationId = requestAnimationFrame(animate)
@@ -79,6 +235,8 @@ function FloatingParticles() {
 
     return () => {
       window.removeEventListener("resize", resizeCanvas)
+      canvas.removeEventListener("mousemove", handleMouseMove)
+      canvas.removeEventListener("mouseleave", handleMouseLeave)
       cancelAnimationFrame(animationId)
     }
   }, [])
@@ -86,8 +244,8 @@ function FloatingParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
-      style={{ opacity: 0.5 }}
+      className="absolute inset-0 cursor-none"
+      style={{ opacity: 0.9 }}
     />
   )
 }
@@ -101,8 +259,8 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-32">
-      {/* Subtle floating particles */}
-      <FloatingParticles />
+      {/* Interactive grid with floating particles */}
+      <InteractiveBackground />
 
       {/* Soft gradient orbs in background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
