@@ -43,10 +43,10 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            We Build AI{" "}
+            We start where{" "}
             <br className="hidden sm:block" />
             <span className="relative inline-block">
-              <span className="gradient-text">That Works.</span>
+              <span className="gradient-text">nobody else will.</span>
             </span>
           </h1>
           
