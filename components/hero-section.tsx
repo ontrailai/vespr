@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { DynamicOrb } from "@/components/dynamic-orb"
+import { FluidSwirl } from "@/components/fluid-swirl"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -14,71 +14,39 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-32">
-      {/* Dynamic Orb - positioned on the right side */}
-      <div className="absolute top-20 right-0 lg:right-[5%] xl:right-[10%] hidden lg:block pointer-events-none">
-        <DynamicOrb />
+    <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
+      {/* Fluid Swirl Background - THE CENTERPIECE */}
+      <div className="absolute inset-0 pointer-events-none">
+        <FluidSwirl />
       </div>
 
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large gradient orb - adjusted position to not compete with dynamic orb */}
-        <div 
-          className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl animate-float"
-          style={{ background: "radial-gradient(circle, #4A9B94 0%, transparent 70%)" }}
-        />
-        <div 
-          className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl animate-float"
-          style={{ background: "radial-gradient(circle, #4A9B94 0%, transparent 70%)", animationDelay: "3s" }}
-        />
-        
-        {/* Floating geometric shapes - adjusted positions */}
-        <div className="absolute top-1/4 left-[10%] w-4 h-4 bg-accent/30 rounded-full animate-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/3 left-[85%] w-6 h-6 bg-accent-secondary/30 rounded-lg rotate-45 animate-float lg:hidden" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-1/4 left-[20%] w-3 h-3 bg-accent/40 rounded-full animate-float" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-[5%] w-5 h-5 border-2 border-accent/30 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
-        
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(#2D2A26 1px, transparent 1px), linear-gradient(90deg, #2D2A26 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}
-        />
-      </div>
+      {/* Subtle overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/60 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="mx-auto max-w-4xl text-center">
-          {/* Eyebrow with animation */}
+          {/* Eyebrow */}
           <div 
-            className={`mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-5 py-2 transition-all duration-700 ${
+            className={`mb-8 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/80 backdrop-blur-sm px-5 py-2.5 transition-all duration-700 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <Sparkles className="h-4 w-4 text-accent animate-pulse" />
+            <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-foreground">
               For businesses ready to run on AI
             </span>
           </div>
 
           <h1 
-            className={`font-serif text-5xl font-medium tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-[1.05] transition-all duration-700 delay-100 ${
+            className={`font-serif text-5xl font-medium tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] transition-all duration-700 delay-100 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            We Build AI That Works.{" "}
-            <span className="relative">
-              <span className="gradient-text">Because We Start Where Nobody Else Will.</span>
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
-                <path 
-                  d="M2 8C50 2 100 2 150 6C200 10 250 10 298 4" 
-                  stroke="#D97756" 
-                  strokeWidth="3" 
-                  strokeLinecap="round"
-                  className="opacity-60"
-                />
-              </svg>
+            We Build AI{" "}
+            <br className="hidden sm:block" />
+            <span className="relative inline-block">
+              <span className="gradient-text">That Works.</span>
             </span>
           </h1>
           
@@ -87,7 +55,8 @@ export function HeroSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your data is the most valuable thing your business owns - and it&apos;s probably a mess. <span className="text-foreground font-medium">We fix that first.</span> Then we implement AI systems that connect your tools, run your workflows, and operate your business autonomously. One team. Every layer. Real results.
+            Your data is your most valuable asset. We fix the mess, then implement AI systems that 
+            <span className="text-foreground font-medium"> connect, automate, and operate</span> your business autonomously.
           </p>
 
           <div 
@@ -98,7 +67,7 @@ export function HeroSection() {
             <Button 
               size="lg" 
               asChild 
-              className="group gap-2 bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 h-14 text-base font-medium shadow-xl shadow-accent/25 transition-all hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-1 animate-pulse-glow"
+              className="group gap-2 bg-foreground hover:bg-foreground/90 text-background rounded-full px-10 h-14 text-base font-medium shadow-2xl transition-all hover:scale-105"
             >
               <Link href="#pricing">
                 See How It Works
@@ -109,7 +78,7 @@ export function HeroSection() {
               size="lg" 
               variant="outline" 
               asChild 
-              className="rounded-full px-8 h-14 text-base font-medium border-2 border-border hover:border-accent/50 hover:bg-accent/5 transition-all hover:-translate-y-1"
+              className="rounded-full px-10 h-14 text-base font-medium border-2 border-foreground/20 bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-all hover:scale-105"
             >
               <Link href="#pricing">Book a Call</Link>
             </Button>
@@ -117,34 +86,26 @@ export function HeroSection() {
 
           {/* Stats row */}
           <div 
-            className={`mt-20 grid grid-cols-3 gap-8 max-w-xl mx-auto transition-all duration-700 delay-500 ${
+            className={`mt-24 grid grid-cols-3 gap-8 max-w-2xl mx-auto transition-all duration-700 delay-500 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
             {[
               { value: "70%", label: "AI projects fail" },
-              { value: "20+", label: "Hours saved per week" },
+              { value: "20+", label: "Hours saved weekly" },
               { value: "26%", label: "Avg revenue lift" },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
+              <div key={i} className="text-center p-4 rounded-2xl bg-background/60 backdrop-blur-sm border border-foreground/5">
                 <p className="font-serif text-3xl lg:text-4xl font-medium text-foreground">{stat.value}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Qualifying statement */}
-        <div 
-          className={`mt-20 border-t border-border pt-12 transition-all duration-700 delay-700 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <p className="text-center text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Built for businesses that run on data and are tired of AI that doesn&apos;t.
-          </p>
-        </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   )
 }
