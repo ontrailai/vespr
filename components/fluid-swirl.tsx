@@ -90,12 +90,12 @@ export function FluidSwirl() {
             centerX + 300, centerY + 200
           )
           
-          // Terracotta to teal color palette
+          // Terracotta to teal color palette - dimmed for subtlety
           const colors = [
-            `rgba(217, 119, 86, ${0.4 - ribbon * 0.03})`,  // Terracotta
-            `rgba(224, 139, 108, ${0.35 - ribbon * 0.03})`, // Light terracotta
-            `rgba(74, 155, 148, ${0.3 - ribbon * 0.03})`,  // Teal
-            `rgba(93, 181, 173, ${0.25 - ribbon * 0.03})`, // Light teal
+            `rgba(217, 119, 86, ${0.18 - ribbon * 0.015})`,  // Terracotta
+            `rgba(224, 139, 108, ${0.15 - ribbon * 0.015})`, // Light terracotta
+            `rgba(74, 155, 148, ${0.14 - ribbon * 0.015})`,  // Teal
+            `rgba(93, 181, 173, ${0.12 - ribbon * 0.015})`, // Light teal
           ]
           
           gradient.addColorStop(0, colors[ribbon % 4])
@@ -125,12 +125,12 @@ export function FluidSwirl() {
         const isWarm = i % 2 === 0
         
         if (isWarm) {
-          orbGradient.addColorStop(0, "rgba(217, 119, 86, 0.8)")
-          orbGradient.addColorStop(0.5, "rgba(217, 119, 86, 0.3)")
+          orbGradient.addColorStop(0, "rgba(217, 119, 86, 0.35)")
+          orbGradient.addColorStop(0.5, "rgba(217, 119, 86, 0.12)")
           orbGradient.addColorStop(1, "transparent")
         } else {
-          orbGradient.addColorStop(0, "rgba(74, 155, 148, 0.8)")
-          orbGradient.addColorStop(0.5, "rgba(74, 155, 148, 0.3)")
+          orbGradient.addColorStop(0, "rgba(74, 155, 148, 0.35)")
+          orbGradient.addColorStop(0.5, "rgba(74, 155, 148, 0.12)")
           orbGradient.addColorStop(1, "transparent")
         }
         
@@ -145,9 +145,9 @@ export function FluidSwirl() {
         centerX, centerY, 0,
         centerX, centerY, 350
       )
-      centralGlow.addColorStop(0, "rgba(217, 119, 86, 0.15)")
-      centralGlow.addColorStop(0.3, "rgba(74, 155, 148, 0.08)")
-      centralGlow.addColorStop(0.6, "rgba(217, 119, 86, 0.04)")
+      centralGlow.addColorStop(0, "rgba(217, 119, 86, 0.08)")
+      centralGlow.addColorStop(0.3, "rgba(74, 155, 148, 0.04)")
+      centralGlow.addColorStop(0.6, "rgba(217, 119, 86, 0.02)")
       centralGlow.addColorStop(1, "transparent")
       
       ctx.fillStyle = centralGlow
@@ -169,8 +169,8 @@ export function FluidSwirl() {
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
       style={{ 
-        filter: "blur(1px)",
-        opacity: 0.9
+        filter: "blur(2px)",
+        opacity: 0.6
       }}
     />
   )
