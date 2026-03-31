@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { FluidSwirl } from "@/components/fluid-swirl"
+import { ElectroOrb } from "@/components/electro-orb"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -15,9 +15,9 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-      {/* Fluid Swirl Background - THE CENTERPIECE */}
+      {/* Electro Orb Background - THE CENTERPIECE */}
       <div className="absolute inset-0 pointer-events-none">
-        <FluidSwirl />
+        <ElectroOrb />
       </div>
 
       {/* Subtle overlay for text readability */}
