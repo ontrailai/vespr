@@ -2,6 +2,27 @@
 
 import { useEffect, useRef } from "react"
 
+interface Particle {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  size: number
+  color: string
+  alpha: number
+  pulse: number
+}
+
+interface GlowOrb {
+  x: number
+  y: number
+  targetX: number
+  targetY: number
+  size: number
+  color: string
+  speed: number
+}
+
 export function FluidSwirl() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -12,146 +33,150 @@ export function FluidSwirl() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Make it full-size
+    let w = window.innerWidth
+    let h = window.innerHeight
+
     const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      w = window.innerWidth
+      h = window.innerHeight
+      canvas.width = w
+      canvas.height = h
     }
     resize()
     window.addEventListener("resize", resize)
 
+    // Create floating particles
+    const particles: Particle[] = []
+    const particleCount = 80
+    
+    const colors = [
+      "217, 119, 86",   // Terracotta
+      "74, 155, 148",   // Teal
+      "224, 139, 108",  // Light terracotta
+      "93, 181, 173",   // Light teal
+    ]
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 2 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.4 + 0.1,
+        pulse: Math.random() * Math.PI * 2
+      })
+    }
+
+    // Create large glowing orbs that drift slowly
+    const orbs: GlowOrb[] = [
+      { x: w * 0.3, y: h * 0.3, targetX: w * 0.3, targetY: h * 0.3, size: 400, color: "217, 119, 86", speed: 0.0008 },
+      { x: w * 0.7, y: h * 0.6, targetX: w * 0.7, targetY: h * 0.6, size: 350, color: "74, 155, 148", speed: 0.001 },
+      { x: w * 0.5, y: h * 0.2, targetX: w * 0.5, targetY: h * 0.2, size: 300, color: "224, 139, 108", speed: 0.0006 },
+      { x: w * 0.2, y: h * 0.7, targetX: w * 0.2, targetY: h * 0.7, size: 280, color: "93, 181, 173", speed: 0.0012 },
+    ]
+
     let time = 0
     let animationId: number
 
-    // Noise function for organic movement
-    const noise = (x: number, y: number, t: number) => {
-      return (
-        Math.sin(x * 0.01 + t) * Math.cos(y * 0.01 + t * 0.7) +
-        Math.sin(x * 0.02 - t * 0.5) * Math.cos(y * 0.015 + t * 0.3) +
-        Math.sin((x + y) * 0.008 + t * 0.2)
-      ) / 3
-    }
-
     const animate = () => {
-      time += 0.008
-      const w = canvas.width
-      const h = canvas.height
+      time += 1
       
-      // Clear with slight trail for smoother look
-      ctx.fillStyle = "rgba(247, 245, 240, 0.15)"
+      // Clear canvas
+      ctx.fillStyle = "#F7F5F0"
       ctx.fillRect(0, 0, w, h)
 
-      const centerX = w * 0.55
-      const centerY = h * 0.45
+      // Update and draw large orbs with mesh gradient effect
+      orbs.forEach((orb, i) => {
+        // Slow drifting movement
+        orb.targetX = (w * (0.2 + (i * 0.2))) + Math.sin(time * orb.speed + i) * 100
+        orb.targetY = (h * (0.3 + (i * 0.15))) + Math.cos(time * orb.speed * 0.7 + i * 2) * 80
+        
+        orb.x += (orb.targetX - orb.x) * 0.02
+        orb.y += (orb.targetY - orb.y) * 0.02
 
-      // Draw multiple fluid ribbons
-      for (let ribbon = 0; ribbon < 8; ribbon++) {
-        ctx.beginPath()
+        // Draw soft gradient orb
+        const gradient = ctx.createRadialGradient(
+          orb.x, orb.y, 0,
+          orb.x, orb.y, orb.size
+        )
+        gradient.addColorStop(0, `rgba(${orb.color}, 0.12)`)
+        gradient.addColorStop(0.4, `rgba(${orb.color}, 0.06)`)
+        gradient.addColorStop(0.7, `rgba(${orb.color}, 0.02)`)
+        gradient.addColorStop(1, "transparent")
         
-        const ribbonPhase = (ribbon * Math.PI * 2) / 8
-        const ribbonOffset = ribbon * 15
-        
-        // Create flowing ribbon path
-        const points: { x: number; y: number }[] = []
-        
-        for (let i = 0; i <= 200; i++) {
-          const t = i / 200
-          const angle = t * Math.PI * 4 + ribbonPhase + time * 0.5
-          
-          // Spiral that expands and contracts
-          const baseRadius = 80 + t * 280 + ribbonOffset
-          const wobble = noise(i * 10, ribbon * 50, time) * 60
-          const radius = baseRadius + wobble
-          
-          // Add vertical displacement for 3D effect
-          const yOffset = Math.sin(angle * 2 + time) * 40 * t
-          
-          const x = centerX + Math.cos(angle) * radius * (0.6 + t * 0.4)
-          const y = centerY + Math.sin(angle) * radius * 0.5 + yOffset
-          
-          points.push({ x, y })
-        }
+        ctx.fillStyle = gradient
+        ctx.fillRect(0, 0, w, h)
+      })
 
-        // Draw as thick ribbon with gradient
-        if (points.length > 1) {
-          ctx.beginPath()
-          ctx.moveTo(points[0].x, points[0].y)
+      // Draw connecting lines between nearby particles
+      ctx.strokeStyle = "rgba(45, 42, 38, 0.03)"
+      ctx.lineWidth = 1
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x
+          const dy = particles[i].y - particles[j].y
+          const dist = Math.sqrt(dx * dx + dy * dy)
           
-          for (let i = 1; i < points.length - 2; i++) {
-            const xc = (points[i].x + points[i + 1].x) / 2
-            const yc = (points[i].y + points[i + 1].y) / 2
-            ctx.quadraticCurveTo(points[i].x, points[i].y, xc, yc)
+          if (dist < 120) {
+            const alpha = (1 - dist / 120) * 0.08
+            ctx.strokeStyle = `rgba(45, 42, 38, ${alpha})`
+            ctx.beginPath()
+            ctx.moveTo(particles[i].x, particles[i].y)
+            ctx.lineTo(particles[j].x, particles[j].y)
+            ctx.stroke()
           }
-          
-          // Create iridescent color based on position and time
-          const hue1 = (ribbon * 30 + time * 20) % 360
-          const gradient = ctx.createLinearGradient(
-            centerX - 300, centerY - 200,
-            centerX + 300, centerY + 200
-          )
-          
-          // Terracotta to teal color palette - dimmed for subtlety
-          const colors = [
-            `rgba(217, 119, 86, ${0.18 - ribbon * 0.015})`,  // Terracotta
-            `rgba(224, 139, 108, ${0.15 - ribbon * 0.015})`, // Light terracotta
-            `rgba(74, 155, 148, ${0.14 - ribbon * 0.015})`,  // Teal
-            `rgba(93, 181, 173, ${0.12 - ribbon * 0.015})`, // Light teal
-          ]
-          
-          gradient.addColorStop(0, colors[ribbon % 4])
-          gradient.addColorStop(0.5, colors[(ribbon + 2) % 4])
-          gradient.addColorStop(1, colors[(ribbon + 1) % 4])
-          
-          ctx.strokeStyle = gradient
-          ctx.lineWidth = 25 - ribbon * 2
-          ctx.lineCap = "round"
-          ctx.lineJoin = "round"
-          ctx.stroke()
         }
       }
 
-      // Add glowing orbs along the swirl
-      for (let i = 0; i < 30; i++) {
-        const orbTime = time + i * 0.3
-        const orbAngle = orbTime * 0.8 + (i * Math.PI * 2) / 30
-        const orbRadius = 150 + Math.sin(orbTime * 2) * 100 + i * 8
+      // Update and draw particles
+      particles.forEach(p => {
+        // Update position
+        p.x += p.vx
+        p.y += p.vy
+        p.pulse += 0.02
+
+        // Wrap around edges
+        if (p.x < 0) p.x = w
+        if (p.x > w) p.x = 0
+        if (p.y < 0) p.y = h
+        if (p.y > h) p.y = 0
+
+        // Pulsing alpha
+        const pulsingAlpha = p.alpha * (0.7 + Math.sin(p.pulse) * 0.3)
+
+        // Draw particle with glow
+        const gradient = ctx.createRadialGradient(
+          p.x, p.y, 0,
+          p.x, p.y, p.size * 4
+        )
+        gradient.addColorStop(0, `rgba(${p.color}, ${pulsingAlpha})`)
+        gradient.addColorStop(0.5, `rgba(${p.color}, ${pulsingAlpha * 0.3})`)
+        gradient.addColorStop(1, "transparent")
         
-        const x = centerX + Math.cos(orbAngle) * orbRadius * 0.7
-        const y = centerY + Math.sin(orbAngle) * orbRadius * 0.4 + Math.sin(orbTime) * 30
-        
-        const size = 4 + Math.sin(orbTime * 3) * 2
-        
-        const orbGradient = ctx.createRadialGradient(x, y, 0, x, y, size * 3)
-        const isWarm = i % 2 === 0
-        
-        if (isWarm) {
-          orbGradient.addColorStop(0, "rgba(217, 119, 86, 0.35)")
-          orbGradient.addColorStop(0.5, "rgba(217, 119, 86, 0.12)")
-          orbGradient.addColorStop(1, "transparent")
-        } else {
-          orbGradient.addColorStop(0, "rgba(74, 155, 148, 0.35)")
-          orbGradient.addColorStop(0.5, "rgba(74, 155, 148, 0.12)")
-          orbGradient.addColorStop(1, "transparent")
-        }
-        
+        ctx.fillStyle = gradient
         ctx.beginPath()
-        ctx.arc(x, y, size * 3, 0, Math.PI * 2)
-        ctx.fillStyle = orbGradient
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2)
         ctx.fill()
-      }
 
-      // Add central glow
-      const centralGlow = ctx.createRadialGradient(
-        centerX, centerY, 0,
-        centerX, centerY, 350
-      )
-      centralGlow.addColorStop(0, "rgba(217, 119, 86, 0.08)")
-      centralGlow.addColorStop(0.3, "rgba(74, 155, 148, 0.04)")
-      centralGlow.addColorStop(0.6, "rgba(217, 119, 86, 0.02)")
-      centralGlow.addColorStop(1, "transparent")
-      
-      ctx.fillStyle = centralGlow
-      ctx.fillRect(0, 0, w, h)
+        // Draw core
+        ctx.fillStyle = `rgba(${p.color}, ${pulsingAlpha * 1.5})`
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+        ctx.fill()
+      })
+
+      // Add subtle noise texture overlay
+      if (time % 3 === 0) {
+        for (let i = 0; i < 50; i++) {
+          const x = Math.random() * w
+          const y = Math.random() * h
+          ctx.fillStyle = `rgba(45, 42, 38, ${Math.random() * 0.015})`
+          ctx.fillRect(x, y, 1, 1)
+        }
+      }
 
       animationId = requestAnimationFrame(animate)
     }
@@ -169,8 +194,7 @@ export function FluidSwirl() {
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
       style={{ 
-        filter: "blur(2px)",
-        opacity: 0.6
+        opacity: 0.85
       }}
     />
   )
