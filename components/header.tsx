@@ -37,7 +37,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr.</span>
+          <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr<span className="text-accent">.</span></span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -74,7 +74,7 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] bg-background border-border">
             <div className="flex items-center gap-2 mb-8 mt-4">
-              <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr.</span>
+              <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr<span className="text-accent">.</span></span>
             </div>
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (
