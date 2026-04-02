@@ -9,19 +9,19 @@ export function Footer() {
             vespr.
           </span>
           <nav className="flex flex-wrap items-center justify-center gap-8">
-            <Link href="#problem" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link href="#problem" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               The Problem
             </Link>
-            <Link href="#solution" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link href="#solution" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               How It Works
             </Link>
-            <Link href="#capabilities" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link href="#capabilities" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Capabilities
             </Link>
-            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </Link>
-            <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               FAQ
             </Link>
           </nav>

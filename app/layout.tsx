@@ -16,8 +16,8 @@ const fontSerif = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: 'vespr. | AI Built Right',
-  description: 'vespr. builds AI systems that actually work. Scout, our AI operating system, connects your tools, learns your business, and runs your operations autonomously.',
+  title: 'vespr. | AI Systems That Replace Entire Departments',
+  description: 'We build custom AI systems that do the work of entire departments. Fully autonomous, connected to your tools, managed monthly. 800+ businesses served.',
   generator: 'v0.app',
   icons: {
     icon: [
