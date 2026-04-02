@@ -1,29 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
 
 export function Footer() {
-  const [isVisible, setIsVisible] = useState(false)
-  const footerRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (footerRef.current) {
-      observer.observe(footerRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   const links = [
     { href: "#problem", label: "The Problem" },
     { href: "#solution", label: "How It Works" },
@@ -33,7 +12,7 @@ export function Footer() {
   ]
 
   return (
-    <footer ref={footerRef} className="border-t border-border bg-card relative overflow-hidden">
+    <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
           <div className="flex items-center gap-2">
@@ -44,7 +23,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:-translate-y-0.5"
+                className="text-sm font-medium text-muted-foreground transition-all hover:text-foreground"
               >
                 {link.label}
               </Link>
@@ -56,7 +35,7 @@ export function Footer() {
             {new Date().getFullYear()} vespr. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
-            Built for businesses that take their data seriously.
+            AI systems that run your business.
           </p>
         </div>
       </div>
