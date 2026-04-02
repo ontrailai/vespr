@@ -2,48 +2,48 @@
 
 import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
-import { HardDrive, Boxes, Terminal, Cpu, Workflow } from "lucide-react"
+import { Database, Layers, Code, Cpu, Workflow } from "lucide-react"
 
 const layers = [
   {
     number: 1,
-    title: "Data Cleanup & Organization",
+    title: "We Clean Your Data",
     color: "#4A9B94",
-    icon: HardDrive,
+    icon: Database,
     description:
-      "We audit every system you use, find the mess, and fix it. Duplicates, inconsistencies, missing fields, scattered records across platforms - we clean it all and get your data into shape.",
+      "Every system you use gets audited. Duplicates, inconsistencies, missing information, records scattered across platforms. We fix all of it. Because AI built on messy data gives messy results.",
   },
   {
     number: 2,
-    title: "Database Architecture",
+    title: "We Build Your Foundation",
     color: "#5B8FD9",
-    icon: Boxes,
+    icon: Layers,
     description:
-      "We build a proper structured database that becomes your single source of truth. No more wondering which spreadsheet has the right number. One place. One answer. Always accurate.",
+      "We create a structured system that becomes your single source of truth. One place for accurate information. Your team and your AI operate from the same reality.",
   },
   {
     number: 3,
-    title: "Custom Software",
+    title: "We Build the Tools You Need",
     color: "#8B6DB3",
-    icon: Terminal,
+    icon: Code,
     description:
-      "We build the tools and interfaces your business actually needs on top of that clean foundation. Not off-the-shelf software you have to bend your workflow around. Software that fits how you already work.",
+      "Custom dashboards, portals, and interfaces designed around how your business actually works. Not off-the-shelf software you have to bend your workflow around.",
   },
   {
     number: 4,
-    title: "AI Layer",
+    title: "We Add AI That Works",
     color: "#D97756",
     icon: Cpu,
     description:
-      "Now we add AI. And it actually works. Because it's pulling from clean, structured, reliable data instead of the chaos most companies feed their models.",
+      "Now the AI goes in. And it actually works because it is pulling from clean, structured, reliable data. This is the step every other company tries to do first. We do it fourth. That is the difference.",
   },
   {
     number: 5,
-    title: "Agent Orchestration (Scout)",
+    title: "We Orchestrate Everything",
     color: "#E5A84B",
     icon: Workflow,
     description:
-      "Scout - our AI operating system that manages your workflows, coordinates tasks across your business, and keeps getting smarter over time. This is the layer everyone wants to skip to. It only works when the four layers below it are solid.",
+      "Multiple AI agents working together across your business. Research, operations, communications, fulfillment. All coordinated, all learning, all getting smarter over time. Running 24/7 on your infrastructure.",
   },
 ]
 
@@ -87,30 +87,39 @@ export function SolutionSection() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative">
-        <div className="mx-auto max-w-3xl text-center mb-16">
+        <div className="mx-auto max-w-3xl text-center mb-8">
           <span 
             className={`inline-block text-accent font-semibold mb-4 tracking-widest uppercase text-xs transition-all duration-500 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            How vespr. Works
+            The Vespr Stack
           </span>
           <h2 
             className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1] transition-all duration-500 delay-100 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Five Layers.{" "}
-            <span className="text-muted-foreground">One System That Works.</span>
+            Everyone Else Sells You the Roof.{" "}
+            <span className="gradient-text">We Pour the Foundation First.</span>
           </h2>
-          <p 
-            className={`mt-6 text-lg leading-relaxed text-muted-foreground transition-all duration-500 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            We don&apos;t just add AI to your business. We build the complete infrastructure - from data foundation to autonomous agents - so every layer makes the next one smarter.
-          </p>
         </div>
+
+        <p 
+          className={`max-w-3xl mx-auto text-center text-lg leading-relaxed text-muted-foreground mb-16 transition-all duration-500 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          Most AI companies skip straight to the shiny part. They bolt a chatbot onto your existing systems and hope for the best. That is why it breaks. That is why it gives wrong answers. That is why you are reading this page right now.
+        </p>
+
+        <p 
+          className={`max-w-3xl mx-auto text-center text-muted-foreground mb-16 transition-all duration-500 delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          We build AI through five integrated layers. Each one makes the next one work. Skip a layer and the whole thing falls apart.
+        </p>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Interactive layer stack visualization */}
@@ -161,7 +170,7 @@ export function SolutionSection() {
                           Layer {layer.number}
                         </span>
                       </div>
-                      <span className="text-white/80 text-xs font-medium hidden sm:block relative">
+                      <span className="text-white/80 text-xs font-medium hidden sm:block relative truncate max-w-[120px]">
                         {layer.title}
                       </span>
                     </button>
@@ -271,19 +280,16 @@ export function SolutionSection() {
 
         {/* Bottom callout */}
         <div 
-          className={`mt-16 bg-gradient-to-r from-accent/10 via-accent/5 to-accent-secondary/10 border border-accent/20 rounded-3xl p-8 lg:p-10 text-center relative overflow-hidden transition-all duration-700 delay-600 ${
+          className={`mt-16 bg-card border border-border rounded-3xl p-8 lg:p-10 text-center relative overflow-hidden transition-all duration-700 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-accent-secondary/5 animate-gradient" />
-          <div className="relative">
-            <p className="font-serif text-2xl lg:text-3xl text-foreground">
-              Other companies sell you layer 4 or 5. <span className="gradient-text font-semibold">We build all five.</span>
-            </p>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              That&apos;s why Scout works when everything else you&apos;ve tried hasn&apos;t.
-            </p>
-          </div>
+          <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            Other companies use five different vendors to attempt this. One for data, one for engineering, one for software, one for AI, one for automation. None of them talk to each other.
+          </p>
+          <p className="mt-4 font-serif text-2xl lg:text-3xl text-foreground">
+            We are one team. One system. Every layer. <span className="gradient-text font-semibold">That is why it works.</span>
+          </p>
         </div>
       </div>
     </section>

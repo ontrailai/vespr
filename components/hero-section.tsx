@@ -283,30 +283,26 @@ export function HeroSection() {
             }`}
           >
             <Sparkles className="h-4 w-4 text-accent" />
-            <span>For businesses ready to run on AI</span>
+            <span>Limited spots for Q2 2026</span>
           </div>
 
           {/* Headline */}
           <h1 
-            className={`font-serif text-5xl font-medium tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-[1.1] transition-all duration-700 delay-100 ${
+            className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] transition-all duration-700 delay-100 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            We start where{" "}
-            <span className="gradient-text">nobody else</span>
-            <br />
-            <span className="gradient-text">will.</span>
+            We Build AI Systems That Do the Work of an{" "}
+            <span className="gradient-text">Entire Department.</span>
           </h1>
 
           {/* Description */}
           <p 
-            className={`mt-8 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${
+            className={`mt-8 text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your data is your most valuable asset. We fix the mess, then implement
-            AI systems that <strong className="text-foreground">connect, automate, and operate</strong> your business
-            autonomously.
+            A law firm signed 127 more cases per quarter. A med spa added $43,000 in monthly revenue. A real estate team cut $11,000/month in overhead. All with AI systems we built and manage.
           </p>
 
           {/* CTAs */}
@@ -316,16 +312,42 @@ export function HeroSection() {
             }`}
           >
             <Button asChild size="lg" className="rounded-full px-8 h-14 text-base">
-              <Link href="#solution">
-                See How It Works
+              <Link href="#pricing">
+                Book Your Free AI Leverage Audit
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-14 text-base">
-              <Link href="#contact">
-                Book a Call
-              </Link>
-            </Button>
+          </div>
+
+          {/* Subtext */}
+          <p 
+            className={`mt-4 text-sm text-muted-foreground transition-all duration-700 delay-400 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            30 minutes. No pitch. You walk away with a clear map of where AI saves you time and money.
+          </p>
+
+          {/* Stats */}
+          <div 
+            className={`mt-12 flex flex-wrap items-center justify-center gap-8 lg:gap-12 transition-all duration-700 delay-500 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <div className="text-center">
+              <p className="text-2xl font-bold text-foreground">800+</p>
+              <p className="text-sm text-muted-foreground">businesses served</p>
+            </div>
+            <div className="h-8 w-px bg-border" />
+            <div className="text-center">
+              <p className="text-2xl font-bold text-foreground">8-figure</p>
+              <p className="text-sm text-muted-foreground">company builder</p>
+            </div>
+            <div className="h-8 w-px bg-border" />
+            <div className="text-center">
+              <p className="text-2xl font-bold text-foreground">6 years</p>
+              <p className="text-sm text-muted-foreground">building AI systems</p>
+            </div>
           </div>
         </div>
       </div>

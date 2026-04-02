@@ -2,72 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 
-const stats = [
-  {
-    stat: "70%",
-    label: "of AI projects fail",
-    description: "Not because of bad AI",
-    color: "from-red-500/20 to-orange-500/20",
-  },
-  {
-    stat: "3 in 4",
-    label: "companies report data not AI-ready",
-    description: "Before any model is trained",
-    color: "from-amber-500/20 to-yellow-500/20",
-  },
-  {
-    stat: "80%",
-    label: "of time spent on data cleaning",
-    description: "By data scientists",
-    color: "from-teal-500/20 to-cyan-500/20",
-  },
-  {
-    stat: "$881M",
-    label: "lost by one company",
-    description: "On bad AI data decisions",
-    color: "from-purple-500/20 to-pink-500/20",
-  },
-]
-
-function AnimatedCounter({ value, isVisible }: { value: string, isVisible: boolean }) {
-  const [displayValue, setDisplayValue] = useState("0")
-  
-  useEffect(() => {
-    if (!isVisible) return
-    
-    // Extract number from value
-    const numMatch = value.match(/[\d.]+/)
-    if (!numMatch) {
-      setDisplayValue(value)
-      return
-    }
-    
-    const targetNum = parseFloat(numMatch[0])
-    const prefix = value.slice(0, value.indexOf(numMatch[0]))
-    const suffix = value.slice(value.indexOf(numMatch[0]) + numMatch[0].length)
-    
-    let current = 0
-    const duration = 1500
-    const steps = 40
-    const increment = targetNum / steps
-    const stepDuration = duration / steps
-    
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= targetNum) {
-        setDisplayValue(value)
-        clearInterval(timer)
-      } else {
-        setDisplayValue(`${prefix}${Math.floor(current)}${suffix}`)
-      }
-    }, stepDuration)
-    
-    return () => clearInterval(timer)
-  }, [isVisible, value])
-  
-  return <span>{displayValue}</span>
-}
-
 export function ProblemSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -95,88 +29,53 @@ export function ProblemSection() {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
       <div className="absolute -top-20 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative">
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <span 
-            className={`inline-block text-accent font-semibold mb-4 tracking-widest uppercase text-xs transition-all duration-500 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Why Most AI Fails
-          </span>
           <h2 
             className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1] transition-all duration-500 delay-100 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Everyone Sells the AI.{" "}
-            <span className="text-muted-foreground">Nobody Builds the Foundation.</span>
+            You Already Know Something{" "}
+            <span className="gradient-text">Is Not Working.</span>
           </h2>
-          <p 
-            className={`mt-6 text-lg leading-relaxed text-muted-foreground transition-all duration-500 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            70% of AI projects fail. Not because the AI is bad. <span className="text-foreground font-medium">Because nobody does what we do first.</span>
-          </p>
         </div>
 
-        {/* Stats grid with animated counters */}
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-16">
-          {stats.map((item, index) => (
-            <div
-              key={item.label}
-              className={`relative overflow-hidden bg-card rounded-2xl p-6 border border-border card-lift group transition-all duration-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 100 + 300}ms` }}
-            >
-              {/* Gradient background on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
-              <div className="relative">
-                <p className="text-5xl font-bold text-foreground font-serif">
-                  <AnimatedCounter value={item.stat} isVisible={isVisible} />
-                </p>
-                <p className="mt-3 text-sm font-semibold text-foreground">{item.label}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Story block with visual flair */}
+        {/* Main content */}
         <div 
-          className={`bg-card rounded-3xl border border-border p-8 lg:p-12 relative overflow-hidden transition-all duration-700 delay-700 ${
+          className={`space-y-6 transition-all duration-700 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          {/* Corner accent */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-accent/10 to-transparent" />
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            Think about what you did yesterday. How much of it actually required your brain? How many hours went to follow-up, scheduling, data entry, CRM updates, and admin work that has nothing to do with why you started this business?
+          </p>
           
-          <div className="max-w-3xl mx-auto space-y-6 relative">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              You hired the agency. You bought the tools. You built the chatbot. And it gives wrong answers, misses context, and makes mistakes that embarrass your team in front of customers.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              <strong className="text-foreground">Why?</strong>{" "}Because other AI companies skip the hard part. They bolt AI onto your existing mess and hope for the best.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              We build AI systems that actually work - and the reason they work is because we do what nobody else bothers to do first. We start with the data.
-            </p>
-            
-            {/* Pull quote with accent styling */}
-            <blockquote className="my-12 py-8 px-8 border-l-4 border-accent bg-accent/5 rounded-r-2xl relative">
-              <div className="absolute -top-4 left-6 text-6xl text-accent/20 font-serif">&ldquo;</div>
-              <p className="font-serif text-2xl lg:text-3xl text-foreground leading-snug relative">
-                The AI industry sells you the roof before anyone pours the foundation. We pour the foundation first.
-              </p>
-            </blockquote>
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            You are paying $10,000, $20,000, maybe $30,000 a month in salaries for work that does not require a human brain. And it still is not getting done consistently. People call in sick. They quit after six months. They forget to follow up. Things fall through the cracks.
+          </p>
+          
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            You have played with ChatGPT. Maybe you tried a chatbot or hired someone on Upwork to &ldquo;set up AI.&rdquo; It felt like a toy, not a tool. You got burned, and now you think AI does not work.
+          </p>
+          
+          <p className="text-lg leading-relaxed text-foreground font-medium">
+            You are not behind because you are lazy or because AI does not work. You are behind because nobody has built it properly for your business.
+          </p>
+        </div>
 
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              That&apos;s our secret weapon. Not a fancier model. Not a better prompt. <span className="inline-flex items-center gap-1 text-accent font-semibold">A real foundation that makes everything else work.</span>
-            </p>
-          </div>
+        {/* Survey stats */}
+        <div 
+          className={`mt-12 bg-card rounded-3xl border border-border p-8 lg:p-10 transition-all duration-700 delay-400 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            We surveyed 242 business owners. <strong className="text-foreground">52% said their biggest challenge with AI is simply not knowing where to start.</strong> Not budget. Not skepticism. Just clarity.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Only 4% said money was the issue. The rest just need a clear roadmap and someone they trust to build it.
+          </p>
         </div>
       </div>
     </section>

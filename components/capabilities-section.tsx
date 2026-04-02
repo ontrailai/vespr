@@ -2,49 +2,55 @@
 
 import { useEffect, useRef, useState } from "react"
 import {
-  Waypoints,
-  Rocket,
-  Dna,
-  Orbit,
-  Eye,
-  Fingerprint
+  Target,
+  Settings,
+  Package,
+  PenTool,
+  Headphones,
+  Sparkles
 } from "lucide-react"
 
 const capabilities = [
   {
-    icon: Waypoints,
-    title: "Connects to Your Entire Stack",
-    description: "Plugs directly into GoHighLevel, HubSpot, Gmail, Slack, your CRM, and project tools. No switching platforms. It sits on top and connects everything.",
-    color: "#4A9B94"
-  },
-  {
-    icon: Rocket,
-    title: "Actually Does the Work",
-    description: "Not a chatbot. Scout runs your processes: sends follow-ups, updates your CRM, processes intake forms, generates reports, manages your pipeline. Real tasks, completed autonomously.",
+    icon: Target,
+    title: "Acquisition Systems",
+    description: "AI runs your entire lead generation and sales pipeline. Lead capture, instant follow-up, nurturing, objection handling, and appointment booking. From first touch to booked call, fully automated.",
+    automates: "lead capture, follow-up, nurture, booking",
     color: "#D97756"
   },
   {
-    icon: Dna,
-    title: "Learns Your Business Over Time",
-    description: "Persistent memory that remembers your clients, preferences, workflows, and terminology. By month 3, it knows your business better than your newest hire.",
-    color: "#8B6DB3"
+    icon: Settings,
+    title: "Operations + Workflow",
+    description: "AI manages your CRM, processes forms, assigns tasks, generates reports, runs daily briefings, and keeps your entire team organized. Your operations run without you babysitting them.",
+    automates: "CRM updates, task routing, reporting, briefings",
+    color: "#4A9B94"
   },
   {
-    icon: Orbit,
-    title: "Multi-Agent Orchestration",
-    description: "Research agents gather intel. Writing agents draft communications. Operations agents manage your pipeline. They coordinate automatically. Team output without the headcount.",
+    icon: Package,
+    title: "Fulfillment Management",
+    description: "AI handles client onboarding, project tracking, deliverable management, status updates, and internal communication. Nothing gets missed. Nothing gets delayed.",
+    automates: "onboarding, tracking, status updates, comms",
     color: "#5B8FD9"
   },
   {
-    icon: Eye,
-    title: "24/7 Autonomous Operations",
-    description: "Scout monitors overnight, catches issues before you wake up, and sends morning briefings. Leads from 2 AM are qualified and in your pipeline by 8 AM.",
+    icon: PenTool,
+    title: "Marketing + Content",
+    description: "AI creates social posts, email campaigns, blog content, and marketing materials in your voice, on your schedule. Consistent output across every channel without hiring a marketing team.",
+    automates: "content creation, email, social, scheduling",
+    color: "#8B6DB3"
+  },
+  {
+    icon: Headphones,
+    title: "Customer Support",
+    description: "AI handles tickets, live chat, email, and phone calls. Trained on your products, policies, and brand voice. Instant, accurate answers any time of day or night.",
+    automates: "tickets, live chat, email, phone",
     color: "#E5A84B"
   },
   {
-    icon: Fingerprint,
-    title: "Your Data Stays Yours",
-    description: "Everything runs on your infrastructure. Your data never trains someone else's model. No shared databases, no multi-tenant risks. Private, secure, yours.",
+    icon: Sparkles,
+    title: "Custom AI Systems",
+    description: "Need something specific? We build custom autonomous agents for anything your business needs. Data analysis, document processing, research, compliance, reporting. If it can be automated, we build it.",
+    automates: "any repeatable process or workflow",
     color: "#4A9B94"
   }
 ]
@@ -72,7 +78,7 @@ export function CapabilitiesSection() {
   }, [])
 
   return (
-    <section id="capabilities" ref={sectionRef} className="py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+    <section id="capabilities" ref={sectionRef} className="py-24 lg:py-32 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -88,21 +94,22 @@ export function CapabilitiesSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            What You Get
+            What We Automate
           </span>
           <h2 
             className={`font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1] transition-all duration-500 delay-100 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            AI That Works For You.
+            AI Systems That Do{" "}
+            <span className="gradient-text">Real Work</span> in Your Business.
           </h2>
           <p 
-            className={`mt-4 font-serif text-2xl lg:text-3xl text-muted-foreground transition-all duration-500 delay-150 ${
+            className={`mt-6 text-lg text-muted-foreground transition-all duration-500 delay-150 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            24/7. Autonomous. Actually Useful.
+            Every system is custom built around your workflows, your tools, and your goals.
           </p>
         </div>
 
@@ -152,8 +159,13 @@ export function CapabilitiesSection() {
                 <h3 className="relative text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
                   {capability.title}
                 </h3>
-                <p className="relative text-muted-foreground leading-relaxed text-sm">
+                <p className="relative text-muted-foreground leading-relaxed text-sm mb-4">
                   {capability.description}
+                </p>
+                
+                {/* Automates tag */}
+                <p className="relative text-xs text-muted-foreground">
+                  <span className="font-semibold text-foreground">Automates:</span> {capability.automates}
                 </p>
 
                 {/* Hover accent line */}
