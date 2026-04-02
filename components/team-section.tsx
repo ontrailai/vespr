@@ -11,7 +11,7 @@ const team = [
     color: "#D97756",
   },
   {
-    name: "Ryan",
+    name: "Ryan Watson",
     role: "Full-Stack Engineer + AI Architect",
     bio: "Six years dedicated exclusively to AI, from foundational models to production deployment. Full-stack engineer who commands the entire modern AI stack: databases, APIs, cloud infrastructure, front-end. Already building AI systems for businesses across multiple industries. Ships in days what most agencies take quarters to scope and plan.",
     tagline: "If it can be built, Ryan builds it. Fast, clean, and production-ready.",
