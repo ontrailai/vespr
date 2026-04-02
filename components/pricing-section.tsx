@@ -76,19 +76,17 @@ export function PricingSection() {
 
         {/* Main offer card */}
         <div 
-          className={`bg-card border-2 border-accent rounded-3xl p-8 lg:p-12 relative overflow-hidden transition-all duration-500 delay-200 ${
+          className={`bg-card border-2 border-accent rounded-3xl p-8 lg:p-12 relative transition-all duration-500 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{ boxShadow: '0 20px 60px rgba(217, 119, 86, 0.15)' }}
         >
-          <div className="absolute -top-3 left-8">
-            <span className="rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-accent-foreground inline-flex items-center gap-1.5">
-              <Sparkles className="h-3 w-3" />
-              The AI Department
-            </span>
-          </div>
+          <span className="rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-accent-foreground inline-flex items-center gap-1.5 mb-6">
+            <Sparkles className="h-3 w-3" />
+            The AI Department
+          </span>
 
-          <p className="text-muted-foreground mb-8 mt-4">Custom built. Fully managed. Guaranteed to deliver or your money back.</p>
+          <p className="text-muted-foreground mb-8">Custom built. Fully managed. Guaranteed to deliver or your money back.</p>
 
           {/* Features */}
           <div className="space-y-6 mb-10">
