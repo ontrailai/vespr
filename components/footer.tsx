@@ -1,33 +1,29 @@
-"use client"
-
 import Link from "next/link"
 
 export function Footer() {
-  const links = [
-    { href: "#problem", label: "The Problem" },
-    { href: "#solution", label: "How It Works" },
-    { href: "#capabilities", label: "Capabilities" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#faq", label: "FAQ" },
-  ]
-
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">vespr.</span>
-          </div>
+          <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">
+            vespr.
+          </span>
           <nav className="flex flex-wrap items-center justify-center gap-8">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-all hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
+            <Link href="#problem" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              The Problem
+            </Link>
+            <Link href="#solution" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              How It Works
+            </Link>
+            <Link href="#capabilities" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              Capabilities
+            </Link>
+            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              Pricing
+            </Link>
+            <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              FAQ
+            </Link>
           </nav>
         </div>
         <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">

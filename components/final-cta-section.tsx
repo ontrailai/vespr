@@ -35,23 +35,16 @@ export function FinalCtaSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #2D2A26 0%, #1A1816 50%, #2D2A26 100%)"
-      }}
+      className="relative py-24 lg:py-32 overflow-hidden bg-background"
     >
-      {/* Terracotta/teal glow effects */}
+      {/* Subtle background accents */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] opacity-20 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, #D97756 0%, transparent 70%)" }}
-      />
-      <div 
-        className="absolute bottom-0 right-0 w-[400px] h-[400px] opacity-15 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #4A9B94 0%, transparent 70%)" }}
-      />
-      <div 
-        className="absolute top-0 left-0 w-[300px] h-[300px] opacity-15 blur-3xl pointer-events-none"
+        className="absolute top-0 right-0 w-[500px] h-[500px] opacity-20 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #D97756 0%, transparent 70%)" }}
+      />
+      <div 
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] opacity-15 blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, #4A9B94 0%, transparent 70%)" }}
       />
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
@@ -62,23 +55,24 @@ export function FinalCtaSection() {
           }`}
         >
           <span className="w-2 h-2 rounded-full bg-accent-secondary animate-pulse" />
-          <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+          <span className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
             Limited spots for April 2026
           </span>
         </div>
 
         {/* Headline */}
         <h2 
-          className={`font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight transition-all duration-700 delay-100 ${
+          className={`font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-foreground leading-tight transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          Every Month You Wait Is Another Month Your Competitors Pull Ahead.
+          Every Month You Wait Is Another Month Your{" "}
+          <span className="gradient-text">Competitors Pull Ahead.</span>
         </h2>
 
         {/* Subtext */}
         <p 
-          className={`mt-8 text-lg text-gray-400 transition-all duration-700 delay-200 ${
+          className={`mt-8 text-lg text-muted-foreground transition-all duration-700 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -93,8 +87,8 @@ export function FinalCtaSection() {
         >
           {benefits.map((benefit, index) => (
             <li key={index} className="flex items-start gap-3">
-              <span className="w-2 h-2 rounded-full bg-accent-secondary mt-2 flex-shrink-0" />
-              <span className="text-gray-300">{benefit}</span>
+              <span className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0" />
+              <span className="text-foreground">{benefit}</span>
             </li>
           ))}
         </ul>
@@ -108,11 +102,7 @@ export function FinalCtaSection() {
           <Button 
             asChild 
             size="lg" 
-            className="rounded-full px-10 py-7 text-lg font-semibold text-white shadow-2xl transition-all hover:-translate-y-1"
-            style={{
-              background: "linear-gradient(135deg, #D97756 0%, #E08B6C 50%, #D97756 100%)",
-              boxShadow: "0 20px 40px rgba(217, 119, 86, 0.3)"
-            }}
+            className="rounded-full px-10 py-7 text-lg font-semibold shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl"
           >
             <Link href="#pricing">
               Book Your Free AI Leverage Audit
@@ -123,7 +113,7 @@ export function FinalCtaSection() {
 
         {/* Fine print */}
         <p 
-          className={`mt-8 text-sm text-gray-500 transition-all duration-700 delay-500 ${
+          className={`mt-8 text-sm text-muted-foreground transition-all duration-700 delay-500 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -132,10 +122,9 @@ export function FinalCtaSection() {
 
         {/* Guarantee */}
         <p 
-          className={`mt-4 text-sm font-medium transition-all duration-700 delay-600 ${
+          className={`mt-4 text-sm font-medium text-accent-secondary transition-all duration-700 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
-          style={{ color: "#4A9B94" }}
         >
           Backed by our full money-back guarantee. You risk nothing.
         </p>
