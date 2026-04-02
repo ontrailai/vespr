@@ -9,6 +9,7 @@ import { CapabilitiesSection } from "@/components/capabilities-section"
 import { ProofSection } from "@/components/proof-section"
 import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
+import { FinalCtaSection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
 
 export default function VesprPage() {
@@ -26,6 +27,7 @@ export default function VesprPage() {
         <ProofSection />
         <PricingSection />
         <FaqSection />
+        <FinalCtaSection />
       </main>
       <Footer />
     </div>
