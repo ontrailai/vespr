@@ -1,27 +1,30 @@
 import Link from "next/link"
 
+// Footer component
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
-          <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">
-            vespr<span className="text-accent">.</span>
-          </span>
-          <nav className="flex flex-wrap items-center justify-center gap-8">
-            <Link href="#problem" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-serif font-semibold text-foreground tracking-tight">
+              vespr<span className="text-accent">.</span>
+            </span>
+          </div>
+          <nav className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <Link href="#problem" className="text-muted-foreground hover:text-foreground transition-colors">
               The Problem
             </Link>
-            <Link href="#solution" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">
               How It Works
             </Link>
-            <Link href="#capabilities" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#capabilities" className="text-muted-foreground hover:text-foreground transition-colors">
               Capabilities
             </Link>
-            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </Link>
-            <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
               FAQ
             </Link>
           </nav>
