@@ -86,14 +86,27 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">5. Data Security</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">5. SMS Communications</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                By providing your phone number and opting in, you consent to receive SMS messages from Vespr related to your account, authentication, onboarding, and service updates. Message frequency may vary. Message and data rates may apply.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To opt out of SMS messages at any time, reply STOP to any message you receive from us. For help or assistance, reply HELP or contact us at support@vespr.io.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Consent to receive SMS messages is not a condition of purchasing any goods or services from Vespr.
+              </p>
+            </section>
+
+            <section className="mb-10">
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">6. Data Security</h2>
               <p className="text-muted-foreground leading-relaxed">
                 We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
               </p>
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">6. Your Rights</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">7. Your Rights</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Depending on your location, you may have certain rights regarding your personal information, including:
               </p>
@@ -107,35 +120,35 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">7. Cookies and Tracking</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">8. Cookies and Tracking</h2>
               <p className="text-muted-foreground leading-relaxed">
                 We use cookies and similar tracking technologies to collect information about your browsing activities. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, some features of our website may not function properly without cookies.
               </p>
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">8. Third-Party Links</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">9. Third-Party Links</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these third-party sites. We encourage you to read the privacy policies of any third-party sites you visit.
               </p>
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">9. Children&apos;s Privacy</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">10. Children&apos;s Privacy</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.
               </p>
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">10. Changes to This Policy</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">11. Changes to This Policy</h2>
               <p className="text-muted-foreground leading-relaxed">
                 We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the &quot;Last updated&quot; date. You are advised to review this privacy policy periodically for any changes.
               </p>
             </section>
 
             <section className="mb-10">
-              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">11. Contact Us</h2>
+              <h2 className="font-serif text-2xl font-medium text-foreground mb-4">12. Contact Us</h2>
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
