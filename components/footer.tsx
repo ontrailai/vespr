@@ -33,9 +33,14 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             {new Date().getFullYear()} vespr<span className="text-accent">.</span> All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground">
-            AI systems that run your business.
-          </p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
