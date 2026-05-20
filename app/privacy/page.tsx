@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
             <section className="mb-10">
               <h2 className="font-serif text-2xl font-medium text-foreground mb-4">1. Introduction</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Welcome to vespr. (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                Vespr (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is a service operated by Holoz LLC. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site or use our services.
@@ -152,9 +152,10 @@ export default function PrivacyPolicyPage() {
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
-              <p className="text-foreground font-medium mt-4">
-                Email: hello@vespr.io
-              </p>
+              <div className="mt-4 space-y-1">
+                <p className="text-foreground font-medium">Holoz LLC</p>
+                <p className="text-muted-foreground">Email: support@vespr.io</p>
+              </div>
             </section>
           </div>
         </div>
