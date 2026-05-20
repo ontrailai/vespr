@@ -31,7 +31,7 @@ export default function TermsOfServicePage() {
             <section className="mb-10">
               <h2 className="font-serif text-2xl font-medium text-foreground mb-4">1. Agreement to Terms</h2>
               <p className="text-muted-foreground leading-relaxed">
-                By accessing or using the services provided by vespr. (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+                These Terms of Service govern the use of Vespr, a platform operated by Holoz LLC. By accessing or using our services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
               </p>
             </section>
 
@@ -166,9 +166,10 @@ export default function TermsOfServicePage() {
               <p className="text-muted-foreground leading-relaxed">
                 For questions about these Terms of Service, please contact us at:
               </p>
-              <p className="text-foreground font-medium mt-4">
-                Email: hello@vespr.io
-              </p>
+              <div className="mt-4 space-y-1">
+                <p className="text-foreground font-medium">Holoz LLC</p>
+                <p className="text-muted-foreground">Email: support@vespr.io</p>
+              </div>
             </section>
           </div>
         </div>

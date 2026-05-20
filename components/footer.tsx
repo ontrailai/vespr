@@ -30,9 +30,14 @@ export function Footer() {
           </nav>
         </div>
         <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            {new Date().getFullYear()} vespr<span className="text-accent">.</span> All rights reserved.
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-sm text-muted-foreground">
+              {new Date().getFullYear()} vespr<span className="text-accent">.</span> All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Vespr is operated by Holoz LLC.
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
